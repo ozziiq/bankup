@@ -1,865 +1,967 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EcoKnow.ME - Simplify Your Business Finance</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <style>
-        /* Global Styles */
-        :root {
-            --primary: #2a9d8f;
-            --primary-dark: #1d7874;
-            --secondary: #264653;
-            --accent: #e9c46a;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --gray: #6c757d;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
+      /* Global Styles */
+      :root {
+        --primary: #2a9d8f;
+        --primary-dark: #1d7874;
+        --secondary: #264653;
+        --accent: #e9c46a;
+        --light: #f8f9fa;
+        --dark: #343a40;
+        --gray: #6c757d;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: #fff;
-            font-size: 16px;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background-color: #fff;
+        font-size: 16px;
+      }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-        }
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        border: none;
+      }
 
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
 
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
 
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+      }
 
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
+      .btn-outline:hover {
+        background-color: var(--primary);
+        color: white;
+      }
 
-        .section {
-            padding: 80px 0;
-        }
+      .section {
+        padding: 80px 0;
+      }
 
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-            text-align: center;
-        }
+      .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+        text-align: center;
+      }
 
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--gray);
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
-        }
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--gray);
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 50px;
+      }
 
-        /* Navigation */
-        nav {
-            background-color: white;
-            box-shadow: var(--shadow);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+      /* Navigation */
+      nav {
+        background-color: white;
+        box-shadow: var(--shadow);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-        }
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+      }
 
-        .logo i {
-            margin-right: 10px;
-        }
+      .logo i {
+        margin-right: 10px;
+      }
 
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        font-weight: 600;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: var(--primary);
+        bottom: -5px;
+        left: 0;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--dark);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          rgba(42, 157, 143, 0.1) 0%,
+          rgba(38, 70, 83, 0.05) 100%
+        );
+        padding: 180px 0 100px;
+        text-align: center;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--secondary);
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--gray);
+        margin-bottom: 40px;
+      }
+
+      .onboarding-bar {
+        width: 100%;
+        max-width: 500px;
+        margin: 40px auto 0;
+        background-color: #e9ecef;
+        border-radius: 10px;
+        height: 10px;
+        overflow: hidden;
+      }
+
+      .onboarding-progress {
+        height: 100%;
+        width: 65%;
+        background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        border-radius: 10px;
+        transition: width 1s ease;
+      }
+
+      .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted var(--gray);
+        cursor: help;
+      }
+
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: var(--dark);
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 10px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 0.9rem;
+        font-weight: normal;
+      }
+
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      /* Features Section */
+      .features {
+        background-color: white;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .feature-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        text-align: center;
+        border-top: 4px solid var(--primary);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature-card i {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      .feature-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--secondary);
+      }
+
+      .feature-card p {
+        color: var(--gray);
+        margin-bottom: 20px;
+      }
+
+      .feature-card.bright {
+        border-top-color: #e9c46a;
+      }
+
+      .feature-card.bright i {
+        color: #e9c46a;
+      }
+
+      .feature-card.advanced {
+        border-top-color: var(--secondary);
+      }
+
+      .feature-card.advanced i {
+        color: var(--secondary);
+      }
+
+      /* Trust Badges */
+      .trust-badges {
+        background-color: var(--light);
+        text-align: center;
+      }
+
+      .badges-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 40px;
+        margin-top: 40px;
+      }
+
+      .badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 150px;
+      }
+
+      .badge i {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 15px;
+      }
+
+      .badge p {
+        font-weight: 600;
+        color: var(--secondary);
+      }
+
+      /* Testimonials */
+      .testimonials {
+        background-color: white;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .testimonial-card {
+        background-color: var(--light);
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      .testimonial-card .quote {
+        font-style: italic;
+        margin-bottom: 20px;
+        color: var(--dark);
+      }
+
+      .testimonial-card .author {
+        display: flex;
+        align-items: center;
+      }
+
+      .testimonial-card .author img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+      }
+
+      .author-info h4 {
+        color: var(--secondary);
+        margin-bottom: 5px;
+      }
+
+      .author-info p {
+        color: var(--gray);
+        font-size: 0.9rem;
+      }
+
+      /* Pricing */
+      .pricing {
+        background-color: var(--light);
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .pricing-card {
+        background-color: white;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: var(--shadow);
+        position: relative;
+        transition: var(--transition);
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .pricing-card.best-value {
+        border: 2px solid var(--accent);
+      }
+
+      .best-value-tag {
+        position: absolute;
+        top: -15px;
+        right: 20px;
+        background-color: var(--accent);
+        color: var(--secondary);
+        padding: 5px 15px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .pricing-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--secondary);
+      }
+
+      .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 20px;
+      }
+
+      .price span {
+        font-size: 1rem;
+        color: var(--gray);
+        font-weight: normal;
+      }
+
+      .pricing-features {
+        list-style: none;
+        margin-bottom: 30px;
+      }
+
+      .pricing-features li {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .pricing-features li i {
+        color: var(--primary);
+        margin-right: 10px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--secondary);
+        color: white;
+        padding: 60px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: var(--accent);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: var(--accent);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        background-color: var(--accent);
+        color: var(--secondary);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.2s;
+      }
+      .delay-2 {
+        animation-delay: 0.4s;
+      }
+      .delay-3 {
+        animation-delay: 0.6s;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
         .nav-links {
-            display: flex;
-            list-style: none;
+          position: fixed;
+          top: 80px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 80px);
+          background-color: white;
+          flex-direction: column;
+          align-items: center;
+          padding: 40px 0;
+          transition: var(--transition);
+          box-shadow: var(--shadow);
+        }
+
+        .nav-links.active {
+          left: 0;
         }
 
         .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            bottom: -5px;
-            left: 0;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+          margin: 15px 0;
         }
 
         .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(42, 157, 143, 0.1) 0%, rgba(38, 70, 83, 0.05) 100%);
-            padding: 180px 0 100px;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+          display: block;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--secondary);
-            line-height: 1.2;
+          font-size: 2.2rem;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            margin-bottom: 40px;
+          font-size: 1rem;
         }
 
-        .onboarding-bar {
-            width: 100%;
-            max-width: 500px;
-            margin: 40px auto 0;
-            background-color: #e9ecef;
-            border-radius: 10px;
-            height: 10px;
-            overflow: hidden;
+        .section {
+          padding: 60px 0;
         }
 
-        .onboarding-progress {
-            height: 100%;
-            width: 65%;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            border-radius: 10px;
-            transition: width 1s ease;
+        .section-title {
+          font-size: 1.8rem;
         }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            border-bottom: 1px dotted var(--gray);
-            cursor: help;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 200px;
-            background-color: var(--dark);
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 10px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 0.9rem;
-            font-weight: normal;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* Features Section */
-        .features {
-            background-color: white;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-            border-top: 4px solid var(--primary);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-
-        .feature-card p {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-
-        .feature-card.bright {
-            border-top-color: #e9c46a;
-        }
-
-        .feature-card.bright i {
-            color: #e9c46a;
-        }
-
-        .feature-card.advanced {
-            border-top-color: var(--secondary);
-        }
-
-        .feature-card.advanced i {
-            color: var(--secondary);
-        }
-
-        /* Trust Badges */
-        .trust-badges {
-            background-color: var(--light);
-            text-align: center;
-        }
-
-        .badges-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .badge {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 150px;
-        }
-
-        .badge i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        .badge p {
-            font-weight: 600;
-            color: var(--secondary);
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background-color: white;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .testimonial-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-        }
-
-        .testimonial-card .quote {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-
-        .testimonial-card .author {
-            display: flex;
-            align-items: center;
-        }
-
-        .testimonial-card .author img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-
-        .author-info h4 {
-            color: var(--secondary);
-            margin-bottom: 5px;
-        }
-
-        .author-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-
-        /* Pricing */
-        .pricing {
-            background-color: var(--light);
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .pricing-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .pricing-card.best-value {
-            border: 2px solid var(--accent);
-        }
-
-        .best-value-tag {
-            position: absolute;
-            top: -15px;
-            right: 20px;
-            background-color: var(--accent);
-            color: var(--secondary);
-            padding: 5px 15px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .price span {
-            font-size: 1rem;
-            color: var(--gray);
-            font-weight: normal;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .pricing-features li {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .pricing-features li i {
-            color: var(--primary);
-            margin-right: 10px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--secondary);
-            color: white;
-            padding: 60px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            color: var(--secondary);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
-        }
-
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: white;
-                flex-direction: column;
-                align-items: center;
-                padding: 40px 0;
-                transition: var(--transition);
-                box-shadow: var(--shadow);
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-
-            .nav-links li {
-                margin: 15px 0;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav>
-        <div class="container navbar">
-            <a href="#" class="logo">
-                <i class="fas fa-chart-line"></i>
-                EcoKnow.ME
-            </a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="feature-pricing/feature-pricing.html">Pricing</a></li>
-                <li><a href="login/login.html" class="btn btn-outline">Login</a></li>
-            </ul>
-        </div>
+      <div class="container navbar">
+        <a href="#" class="logo">
+          <i class="fas fa-chart-line"></i>
+          EcoKnow.ME
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="feature-pricing/feature-pricing.html">Pricing</a></li>
+          <li>
+            <a href="https://umkm.enpitsu.my.id/" class="btn btn-outline"
+              >Login</a
+            >
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content">
-            <h1 class="fade-in">Simplify Your Business Finance</h1>
-            <p class="fade-in delay-1">All-in-one financial management platform designed specifically for <span class="tooltip">UMKM<span class="tooltiptext">Usaha Mikro Kecil dan Menengah (Micro, Small and Medium Enterprises)</span></span>. Track, analyze, and grow your business effortlessly.</p>
-            <div class="fade-in delay-2">
-                <a href="login/login.html" class="btn btn-primary">Try Free Demo</a>
-            </div>
-            <div class="onboarding-bar fade-in delay-3">
-                <div class="onboarding-progress"></div>
-            </div>
-            <p class="fade-in delay-3" style="margin-top: 10px; font-size: 0.9rem;">65% of onboarding completed</p>
+      <div class="container hero-content">
+        <h1 class="fade-in">Simplify Your Business Finance</h1>
+        <p class="fade-in delay-1">
+          All-in-one financial management platform designed specifically for
+          <span class="tooltip"
+            >UMKM<span class="tooltiptext"
+              >Usaha Mikro Kecil dan Menengah (Micro, Small and Medium
+              Enterprises)</span
+            ></span
+          >. Track, analyze, and grow your business effortlessly.
+        </p>
+        <div class="fade-in delay-2">
+          <a href="https://umkm.enpitsu.my.id/" class="btn btn-primary"
+            >Try Free Demo</a
+          >
         </div>
+        <div class="onboarding-bar fade-in delay-3">
+          <div class="onboarding-progress"></div>
+        </div>
+        <p class="fade-in delay-3" style="margin-top: 10px; font-size: 0.9rem">
+          65% of onboarding completed
+        </p>
+      </div>
     </section>
 
     <!-- Features Section -->
     <section class="section features" id="features">
-        <div class="container">
-            <h2 class="section-title">Choose Your Financial Journey</h2>
-            <p class="section-subtitle">Select the package that matches your business needs and grow at your own pace</p>
-            
-            <div class="features-grid">
-                <div class="feature-card bright fade-in">
-                    <i class="fas fa-piggy-bank"></i>
-                    <h3>Beginner</h3>
-                    <p>Perfect for startups and small businesses. Simple cash flow tracking with intuitive interface.</p>
-                    <a href="learn-more/beginner-learnmore.html" class="btn btn-outline">Learn More</a>
-                </div>
-                
-                <div class="feature-card fade-in delay-1">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Intermediate</h3>
-                    <p>Advanced dashboard with visual reports to help you understand your business performance.</p>
-                    <a href="learn-more/intermediate-learnmore.html" class="btn btn-outline">Learn More</a>
-                </div>
-                
-                <div class="feature-card advanced fade-in delay-2">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Advanced</h3>
-                    <p>Professional tools with deep analytics for growing businesses ready to scale.</p>
-                    <a href="#" class="btn btn-outline">Learn More</a>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Choose Your Financial Journey</h2>
+        <p class="section-subtitle">
+          Select the package that matches your business needs and grow at your
+          own pace
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card bright fade-in">
+            <i class="fas fa-piggy-bank"></i>
+            <h3>Beginner</h3>
+            <p>
+              Perfect for startups and small businesses. Simple cash flow
+              tracking with intuitive interface.
+            </p>
+            <a href="learn-more/beginner-learnmore.html" class="btn btn-outline"
+              >Learn More</a
+            >
+          </div>
+
+          <div class="feature-card fade-in delay-1">
+            <i class="fas fa-chart-pie"></i>
+            <h3>Intermediate</h3>
+            <p>
+              Advanced dashboard with visual reports to help you understand your
+              business performance.
+            </p>
+            <a
+              href="learn-more/intermediate-learnmore.html"
+              class="btn btn-outline"
+              >Learn More</a
+            >
+          </div>
+
+          <div class="feature-card advanced fade-in delay-2">
+            <i class="fas fa-chart-line"></i>
+            <h3>Advanced</h3>
+            <p>
+              Professional tools with deep analytics for growing businesses
+              ready to scale.
+            </p>
+            <a href="#" class="btn btn-outline">Learn More</a>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Trust Badges -->
     <section class="section trust-badges">
-        <div class="container">
-            <h2 class="section-title">Trusted by Thousands of UMKM</h2>
-            <p class="section-subtitle">Our platform meets the highest standards for Indonesian small businesses</p>
-            
-            <div class="badges-container">
-                <div class="badge fade-in">
-                    <i class="fas fa-shield-alt"></i>
-                    <p>SAK EMKM Ready</p>
-                </div>
-                <div class="badge fade-in delay-1">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <p>KUR Ready</p>
-                </div>
-                <div class="badge fade-in delay-2">
-                    <i class="fas fa-lock"></i>
-                    <p>Data Encrypted</p>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Trusted by Thousands of UMKM</h2>
+        <p class="section-subtitle">
+          Our platform meets the highest standards for Indonesian small
+          businesses
+        </p>
+
+        <div class="badges-container">
+          <div class="badge fade-in">
+            <i class="fas fa-shield-alt"></i>
+            <p>SAK EMKM Ready</p>
+          </div>
+          <div class="badge fade-in delay-1">
+            <i class="fas fa-hand-holding-usd"></i>
+            <p>KUR Ready</p>
+          </div>
+          <div class="badge fade-in delay-2">
+            <i class="fas fa-lock"></i>
+            <p>Data Encrypted</p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Testimonials -->
     <section class="section testimonials">
-        <div class="container">
-            <h2 class="section-title">What Our Users Say</h2>
-            <p class="section-subtitle">Hear from business owners who transformed their financial management</p>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <p class="quote">"FinUMKM helped me understand my cash flow for the first time. My profits increased by 30% after just 3 months of using their analytics."</p>
-                    <div class="author">
-                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Wijaya">
-                        <div class="author-info">
-                            <h4>Aqilah Nahdah Muthiah</h4>
-                            <p>Owner, Sarah's Catering</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card fade-in delay-1">
-                    <p class="quote">"The KUR integration feature saved me hours of paperwork. I got my business loan approved in half the usual time!"</p>
-                    <div class="author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Budi Santoso">
-                        <div class="author-info">
-                            <h4>Budi Santoso</h4>
-                            <p>Owner, Budi's Furniture</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card fade-in delay-2">
-                    <p class="quote">"As someone who's not good with numbers, the beginner package was a lifesaver. Now I'm upgrading to Intermediate as my business grows!"</p>
-                    <div class="author">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dewi Anggraeni">
-                        <div class="author-info">
-                            <h4>Dewi Anggraeni</h4>
-                            <p>Owner, Dewi Fashion</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title">What Our Users Say</h2>
+        <p class="section-subtitle">
+          Hear from business owners who transformed their financial management
+        </p>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card fade-in">
+            <p class="quote">
+              "FinUMKM helped me understand my cash flow for the first time. My
+              profits increased by 30% after just 3 months of using their
+              analytics."
+            </p>
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/women/45.jpg"
+                alt="Sarah Wijaya"
+              />
+              <div class="author-info">
+                <h4>Aqilah Nahdah Muthiah</h4>
+                <p>Owner, Sarah's Catering</p>
+              </div>
             </div>
+          </div>
+
+          <div class="testimonial-card fade-in delay-1">
+            <p class="quote">
+              "The KUR integration feature saved me hours of paperwork. I got my
+              business loan approved in half the usual time!"
+            </p>
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/men/32.jpg"
+                alt="Budi Santoso"
+              />
+              <div class="author-info">
+                <h4>Budi Santoso</h4>
+                <p>Owner, Budi's Furniture</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card fade-in delay-2">
+            <p class="quote">
+              "As someone who's not good with numbers, the beginner package was
+              a lifesaver. Now I'm upgrading to Intermediate as my business
+              grows!"
+            </p>
+            <div class="author">
+              <img
+                src="https://randomuser.me/api/portraits/women/68.jpg"
+                alt="Dewi Anggraeni"
+              />
+              <div class="author-info">
+                <h4>Dewi Anggraeni</h4>
+                <p>Owner, Dewi Fashion</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Pricing -->
     <section class="section pricing" id="pricing">
-        <div class="container">
-            <h2 class="section-title">Simple, Transparent Pricing</h2>
-            <p class="section-subtitle">Choose the plan that works for your business size and needs</p>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card fade-in">
-                    <h3>One-Time Purchase</h3>
-                    <div class="price">Rp 69.000 <span>one time</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Lifetime access to Beginner features</li>
-                        <li><i class="fas fa-check"></i> 1 year of updates</li>
-                        <li><i class="fas fa-check"></i> Email support</li>
-                        <li><i class="fas fa-check"></i> Basic reports</li>
-                    </ul>
-                    <a href="login/login.html" class="btn btn-outline">Get Started</a>
-                </div>
-                
-                <div class="pricing-card best-value fade-in delay-1">
-                    <div class="best-value-tag">Best Value</div>
-                    <h3>Annual Subscription</h3>
-                    <div class="price">Rp 55.000 <span>/ month</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> Access to all Intermediate features</li>
-                        <li><i class="fas fa-check"></i> Continuous updates</li>
-                        <li><i class="fas fa-check"></i> Priority support</li>
-                        <li><i class="fas fa-check"></i> Advanced analytics</li>
-                        <li><i class="fas fa-check"></i> KUR application assistance</li>
-                    </ul>
-                    <a href="login/login.html" class="btn btn-primary">Get Started</a>
-                </div>
-                
-                <div class="pricing-card fade-in delay-2">
-                    <h3>Enterprise</h3>
-                    <div class="price">Custom</div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> All Advanced features</li>
-                        <li><i class="fas fa-check"></i> Dedicated account manager</li>
-                        <li><i class="fas fa-check"></i> 24/7 support</li>
-                        <li><i class="fas fa-check"></i> Custom integrations</li>
-                        <li><i class="fas fa-check"></i> Team access</li>
-                        <li><i class="fas fa-check"></i> SAK EMKM compliance</li>
-                    </ul>
-                    <a href="https://wa.me/6285157449391" class="btn btn-outline">Contact Sales</a>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <p class="section-subtitle">
+          Choose the plan that works for your business size and needs
+        </p>
+
+        <div class="pricing-grid">
+          <div class="pricing-card fade-in">
+            <h3>One-Time Purchase</h3>
+            <div class="price">Rp 69.000 <span>one time</span></div>
+            <ul class="pricing-features">
+              <li>
+                <i class="fas fa-check"></i> Lifetime access to Beginner
+                features
+              </li>
+              <li><i class="fas fa-check"></i> 1 year of updates</li>
+              <li><i class="fas fa-check"></i> Email support</li>
+              <li><i class="fas fa-check"></i> Basic reports</li>
+            </ul>
+            <a href="https://umkm.enpitsu.my.id/" class="btn btn-outline"
+              >Get Started</a
+            >
+          </div>
+
+          <div class="pricing-card best-value fade-in delay-1">
+            <div class="best-value-tag">Best Value</div>
+            <h3>Annual Subscription</h3>
+            <div class="price">Rp 55.000 <span>/ month</span></div>
+            <ul class="pricing-features">
+              <li>
+                <i class="fas fa-check"></i> Access to all Intermediate features
+              </li>
+              <li><i class="fas fa-check"></i> Continuous updates</li>
+              <li><i class="fas fa-check"></i> Priority support</li>
+              <li><i class="fas fa-check"></i> Advanced analytics</li>
+              <li><i class="fas fa-check"></i> KUR application assistance</li>
+            </ul>
+            <a href="https://umkm.enpitsu.my.id/" class="btn btn-primary"
+              >Get Started</a
+            >
+          </div>
+
+          <div class="pricing-card fade-in delay-2">
+            <h3>Enterprise</h3>
+            <div class="price">Custom</div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-check"></i> All Advanced features</li>
+              <li><i class="fas fa-check"></i> Dedicated account manager</li>
+              <li><i class="fas fa-check"></i> 24/7 support</li>
+              <li><i class="fas fa-check"></i> Custom integrations</li>
+              <li><i class="fas fa-check"></i> Team access</li>
+              <li><i class="fas fa-check"></i> SAK EMKM compliance</li>
+            </ul>
+            <a href="https://wa.me/6285157449391" class="btn btn-outline"
+              >Contact Sales</a
+            >
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>EcoKnow.ME</h3>
-                    <p>Simplifying financial management for Indonesian small businesses since 2020.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/ecoknow.me/"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Product</h3>
-                    <ul class="footer-links">
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#">Demo</a></li>
-                        <li><a href="#">Updates</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Guides</a></li>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Webinars</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="https://wa.me/6285157449391">Contact</a></li>
-                        <li><a href="#">Partners</a></li>
-                    </ul>
-                </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>EcoKnow.ME</h3>
+            <p>
+              Simplifying financial management for Indonesian small businesses
+              since 2020.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com/ecoknow.me/"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 EcoKnow.ME. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Product</h3>
+            <ul class="footer-links">
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#">Demo</a></li>
+              <li><a href="#">Updates</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Resources</h3>
+            <ul class="footer-links">
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Guides</a></li>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Webinars</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Company</h3>
+            <ul class="footer-links">
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="https://wa.me/6285157449391">Contact</a></li>
+              <li><a href="#">Partners</a></li>
+            </ul>
+          </div>
         </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2025 EcoKnow.ME. All rights reserved. |
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navLinks = document.getElementById("navLinks");
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+      mobileMenuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                navLinks.classList.remove('active');
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
 
-        // Animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
+          navLinks.classList.remove("active");
 
-        fadeElements.forEach(element => {
-            element.style.opacity = 0;
-            element.style.transform = 'translateY(20px)';
-            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(element);
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
         });
+      });
+
+      // Animation on scroll
+      const fadeElements = document.querySelectorAll(".fade-in");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = 1;
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        }
+      );
+
+      fadeElements.forEach((element) => {
+        element.style.opacity = 0;
+        element.style.transform = "translateY(20px)";
+        element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        observer.observe(element);
+      });
     </script>
-</body>
+  </body>
 </html>
