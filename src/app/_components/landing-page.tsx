@@ -33,7 +33,7 @@ export const Navbar = () => {
 					onClick={() => setMenuOpen(false)}
 				>
 					{/* <FaChartLine className="mr-2" /> */}
-					BankUp
+					aKURasi
 				</Link>
 				<button
 					className="text-2xl text-gray-700 lg:hidden"

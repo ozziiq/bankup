@@ -6,7 +6,7 @@ import { Geist } from "next/font/google";
 // import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {
-	title: "BankUp - Simplify Your Business Finance",
+	title: "aKURasi - Simplify Your Business Finance",
 	description: "Insert proper description here",
 	icons: [{ rel: "icon", url: "/favicon.ico" }],
 };

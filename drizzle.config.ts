@@ -8,5 +8,5 @@ export default {
 	dbCredentials: {
 		url: env.DATABASE_URL,
 	},
-	tablesFilter: ["new-bankup_*"],
+	tablesFilter: ["new-akurasi_*"],
 } satisfies Config;
