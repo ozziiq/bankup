@@ -1,167 +1,323 @@
+const testimonials = [
+	{
+		quote:
+			"“FinUMKM helped me understand my cash flow for the first time. My profits increased by 30% after just 3 months of using their analytics.”",
+		img: "https://randomuser.me/api/portraits/women/45.jpg",
+		name: "Aqilah Nahdah Muthiah",
+		role: "Owner, Sarah's Catering",
+	},
+	{
+		quote:
+			"“The KUR integration feature saved me hours of paperwork. I got my business loan approved in half the usual time!”",
+		img: "https://randomuser.me/api/portraits/men/32.jpg",
+		name: "Budi Santoso",
+		role: "Owner, Budi's Furniture",
+	},
+	{
+		quote: `“As someone who's not good with numbers, the beginner package was a lifesaver. Now I'm upgrading to Intermediate as my business grows!”`,
+		img: "https://randomuser.me/api/portraits/women/68.jpg",
+		name: "Dewi Anggraeni",
+		role: "Owner, Dewi Fashion",
+	},
+];
+
 export default function Home() {
 	return (
-		<div className="px-10 py-44">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, vitae
-			accusantium soluta error et voluptatibus! Esse molestiae, earum quaerat
-			quos id soluta incidunt minima suscipit quibusdam debitis nesciunt
-			voluptate at. Ipsum, temporibus quae. Unde velit suscipit ullam eveniet
-			quaerat veritatis consequuntur cum quibusdam optio, tenetur beatae quos! A
-			illum aut explicabo officia ut quibusdam quasi delectus placeat, adipisci
-			odio voluptates? Placeat eligendi tenetur aspernatur? Labore rem
-			asperiores dicta ipsum. Cum dolorum neque perspiciatis labore excepturi
-			aliquid omnis debitis quas quis quo. Earum nemo deserunt voluptates libero
-			rem minus iure hic. Eos facere sapiente consequatur, ex distinctio
-			tempora, praesentium cumque rem vero dolorum quos error voluptatibus
-			nostrum officiis modi iusto quam nemo magni quaerat, dicta quod hic.
-			Aperiam recusandae laudantium corrupti! Magni nulla dignissimos officia
-			nostrum molestias doloribus labore repellat distinctio ut deserunt nihil,
-			eaque vitae pariatur animi quod similique rerum fuga iure porro laboriosam
-			officiis molestiae quas exercitationem. Quam, consectetur? Quas tempore
-			necessitatibus distinctio rerum ducimus placeat illum odio porro provident
-			ipsum error deleniti iste explicabo est natus, qui fugit at sed maxime, a
-			deserunt doloribus sapiente. Voluptatibus, similique ullam. Similique
-			blanditiis cum quibusdam molestias mollitia. Nobis perferendis facilis
-			repudiandae, nostrum asperiores rerum nam, in dolores minima autem
-			voluptatum excepturi ipsam dicta enim delectus iure, repellendus
-			distinctio consequuntur deleniti laborum! Neque doloremque, similique
-			ipsum molestiae rem ex deleniti repellendus maiores consectetur voluptates
-			dignissimos accusamus totam minus pariatur modi vitae aliquid ratione
-			beatae a doloribus, velit expedita at? Incidunt, animi impedit? Odit et
-			inventore veniam praesentium a, quo eius. Laudantium consectetur quidem
-			distinctio dolores incidunt! Et voluptate dolor eaque ipsum alias, aut
-			incidunt deserunt ratione tempore officia amet, illo itaque totam? In illo
-			similique eaque a sit nostrum odit facere, expedita rerum dolorum
-			voluptates dolores blanditiis accusantium, assumenda est eveniet! Alias
-			consequatur libero quo hic dolore unde aliquid similique corrupti at. Fuga
-			expedita optio earum saepe aspernatur, vero ipsa eius repellendus iusto ad
-			nostrum veniam nulla ratione quas dolores cum qui nesciunt sed eos! Autem
-			eaque iure, necessitatibus dolores quis accusamus? Est laborum, incidunt
-			molestiae eum sequi provident voluptate repellendus nisi illo maiores
-			aliquam rem, non similique, tempore ea illum aut nihil blanditiis? Ea
-			saepe quae ipsum fuga libero expedita sunt? Minus at reiciendis eaque
-			inventore, obcaecati ad repudiandae a sed totam, earum est harum saepe
-			repellat, quae nemo voluptates quis ipsa accusantium ut eos error qui!
-			Voluptates, reiciendis harum! Tempora. Ipsam animi modi necessitatibus,
-			facere blanditiis est corporis odit maxime sapiente aliquid sed nisi
-			architecto ut autem pariatur eveniet eum maiores nam veniam! In error
-			incidunt blanditiis explicabo fugiat nemo. Natus earum doloribus
-			necessitatibus quisquam, officia dicta incidunt quasi esse, ea consequatur
-			culpa aspernatur similique doloremque accusantium pariatur? Tempore fuga
-			quidem eveniet earum itaque harum ut, consectetur quis totam? Ut.
-			Provident, voluptatem at voluptatibus, minus explicabo pariatur quasi
-			reiciendis animi tenetur quaerat nam expedita, officiis sint quae nulla
-			ipsum doloremque molestiae. Animi nihil cupiditate provident sequi velit
-			itaque quisquam aliquid. At unde quo illum eaque libero aliquid error
-			numquam iusto inventore quis, veritatis enim nisi totam fuga autem
-			deleniti. Quo, iusto quibusdam laboriosam nulla perferendis dolore
-			corporis repellendus ullam odio! Labore accusantium dicta perferendis
-			corrupti, sint eligendi laboriosam hic obcaecati tempora earum, ut nisi
-			odio quo dolore deserunt veniam fugiat neque voluptatem beatae?
-			Reprehenderit perferendis vitae id, modi quia ipsum? Repellendus obcaecati
-			molestiae veritatis eos tenetur sint ut, doloribus quasi quaerat,
-			cupiditate vel officia deserunt est optio deleniti delectus rerum iusto?
-			Aspernatur perspiciatis nulla exercitationem nam! Explicabo mollitia nobis
-			dolore. Labore, nobis unde quis consequatur deserunt doloribus, accusamus
-			distinctio vero debitis quisquam amet reprehenderit odio. Ipsam reiciendis
-			sed quam, voluptates obcaecati rem architecto quod provident eum
-			perferendis nihil nam nulla. Architecto deserunt, similique at sit esse,
-			nobis eum, debitis dolorum molestiae aperiam ab in perferendis cupiditate
-			vero aliquid neque! Corrupti nostrum quae adipisci neque eveniet soluta
-			laborum accusamus tempore qui. Iste voluptatibus adipisci sint. Aliquid
-			dignissimos dolores est magni officia. Commodi, cum! Beatae aliquid non
-			eum repudiandae illo architecto nesciunt enim nemo ipsa amet aspernatur
-			quod est, laboriosam veritatis ratione. Vel molestias accusamus, quis
-			eaque quisquam ea laudantium! Sequi mollitia nesciunt illo nemo totam et
-			dolor quibusdam labore placeat dicta vero quisquam, quos harum temporibus
-			facilis? Consequatur veniam consequuntur id. Nobis, ducimus aspernatur,
-			consequuntur quia eaque quos repellat voluptate alias ipsam harum veniam
-			ullam molestias voluptatum recusandae quis in. Atque soluta alias eius
-			ratione nobis facilis quisquam voluptates, ipsa ab. Vel, iure animi
-			commodi suscipit sint itaque quia dolorum expedita? Quae veritatis quia,
-			quidem molestias totam asperiores. Tempora itaque incidunt, ex error quae
-			ipsum maxime recusandae cupiditate voluptatem repellendus dolorum?
-			Impedit, sit amet nesciunt quia repellat dignissimos? Architecto fuga ut
-			commodi quo distinctio! Quisquam architecto reiciendis, eum esse,
-			consequatur consectetur cupiditate, labore maxime nesciunt eius
-			reprehenderit molestias voluptates dolore aut? Ducimus molestias fugiat
-			architecto blanditiis, explicabo exercitationem eum commodi autem animi
-			suscipit quia ex ipsa dolor nemo neque possimus, eos voluptatum veritatis
-			nihil molestiae. Neque consequuntur laboriosam nam esse iste? Maxime non
-			rem totam fugiat reprehenderit aperiam excepturi consequatur quisquam unde
-			inventore quas adipisci, provident nihil hic, veniam aliquam, illum labore
-			deleniti minima officiis laboriosam odit qui earum culpa? A? Perspiciatis
-			obcaecati est fugiat iure nulla sapiente rem, vitae quo, laudantium
-			nostrum libero ipsum possimus, excepturi totam in et repellendus sequi
-			neque esse tempore aut natus! Incidunt expedita sunt dolor? Expedita
-			consequuntur illum corporis perferendis esse reprehenderit dolorem quaerat
-			quis eum tenetur soluta ipsum nihil voluptatibus, quas animi. Repellendus
-			molestiae maxime placeat asperiores nihil eum laborum fugiat corporis
-			magni? Officiis! Eum, iste? Nam quae, quisquam suscipit vel incidunt, ut
-			minus ad quos quia quas rem illo provident! Soluta quo pariatur dolores
-			praesentium ullam deleniti autem, quidem dolore unde, nulla illo! Nihil
-			debitis maiores nostrum ipsam, modi mollitia cupiditate dolorem assumenda
-			doloremque molestias sit quas accusantium expedita est reiciendis dolorum
-			non neque aperiam fugiat voluptatibus optio odio eaque delectus! Illo,
-			delectus. Ipsum tenetur, similique ipsa eos incidunt est maxime id at
-			rerum debitis facilis cupiditate odio saepe facere dolorem dolor minus
-			amet maiores ex. Laudantium perspiciatis quaerat distinctio debitis ab
-			illo! Unde quibusdam eum doloremque, aliquam labore, officia, tempore
-			doloribus iure deleniti sed reiciendis excepturi explicabo? Quidem aut
-			quam ab quibusdam tempore temporibus, soluta qui quos quod commodi dolorum
-			necessitatibus doloremque? Dolorum fugit, praesentium perspiciatis nulla
-			doloremque ducimus ipsum tenetur? Beatae quasi enim, nihil maiores vitae
-			tempora qui, illum earum nam rerum odio praesentium ab autem recusandae
-			optio similique nobis libero! Voluptatibus dolores quis sunt aliquam
-			accusamus sint totam saepe sequi. Dicta consectetur itaque minus, voluptas
-			eius necessitatibus doloremque molestias nesciunt at placeat fuga nulla
-			perferendis perspiciatis quia tempore voluptates voluptate? Excepturi
-			mollitia nesciunt temporibus iure, reprehenderit ratione aut culpa neque
-			non. Autem aut alias provident dolore, molestias iure similique! Vitae,
-			animi! Numquam possimus obcaecati error magnam aperiam? Quo, totam aut?
-			Dolorum, assumenda numquam consequuntur deserunt ut, suscipit iure
-			laudantium sed perferendis exercitationem distinctio. In, reiciendis.
-			Doloremque, natus! Possimus doloribus tempora corporis sed explicabo,
-			impedit perspiciatis expedita commodi architecto, ab reprehenderit!
-			Aperiam inventore quasi quod assumenda quaerat ex tenetur, maiores
-			doloremque labore optio officia, iusto perferendis blanditiis reiciendis
-			esse praesentium illum maxime autem! Id similique sit praesentium dolores
-			nobis, sunt voluptate. Quae repellendus voluptatum quos totam dolor
-			deserunt delectus id veniam deleniti impedit earum provident, recusandae
-			asperiores sit iste dicta omnis ipsam reiciendis vel dolorem, doloribus
-			similique qui? At, voluptatum enim. Temporibus ducimus impedit,
-			necessitatibus dolores iure qui fuga nesciunt ea adipisci nemo accusantium
-			suscipit eaque repellendus incidunt asperiores perspiciatis nihil porro
-			quae culpa aut! Iusto delectus commodi quasi vitae natus. Sit adipisci
-			architecto fugiat, dolore esse totam eveniet quibusdam praesentium
-			consequatur quod, deserunt reprehenderit, corporis ducimus quam asperiores
-			deleniti nesciunt laboriosam! Modi enim reprehenderit perspiciatis ullam
-			dolore nesciunt voluptatem cupiditate! Ducimus, explicabo. Quisquam quos
-			praesentium voluptate suscipit vel. Beatae atque perferendis maiores
-			adipisci labore porro fugiat cumque alias dignissimos ad sit ipsa
-			repellendus illum officiis minima, eligendi tempore eos in. Corporis
-			reiciendis distinctio rerum exercitationem temporibus quidem nam, sint
-			iusto, corrupti placeat ut sapiente perspiciatis nesciunt eligendi
-			mollitia culpa optio eveniet ab qui fuga ex. Obcaecati quae eos aperiam
-			itaque? Excepturi aliquam illo illum. Aspernatur autem quos a ea, neque
-			temporibus, magni officia commodi, minus debitis ex consequatur.
-			Accusantium inventore doloribus voluptatem, quod temporibus error maiores
-			quas esse deserunt eius. Est dolore omnis, deserunt laborum quia odit quos
-			velit quidem officia doloremque quod animi, vitae harum soluta! Temporibus
-			optio, molestiae repellendus necessitatibus possimus, reiciendis a
-			corporis voluptatibus ipsam, illum assumenda! Laboriosam magnam iste
-			aliquid ab explicabo, praesentium soluta id unde ratione, culpa beatae at
-			ducimus voluptate repellat commodi, doloremque nihil eum vel dolores eaque
-			aperiam. Adipisci nulla doloribus a soluta? Iste modi, ad sunt porro autem
-			rem ut similique? Accusantium eius minus temporibus voluptatum amet
-			incidunt possimus cupiditate itaque nesciunt enim, magnam libero quas eum
-			hic ipsa nostrum. Repudiandae, debitis. Laborum minima soluta, dignissimos
-			numquam aliquam molestiae aspernatur accusamus facere. Laboriosam aperiam
-			eaque alias dolore? Ut neque odit, veritatis molestias veniam impedit
-			magnam corporis nulla magni, rerum dolores inventore culpa. Minima illo
-			sunt eligendi veritatis qui eos libero sit placeat quas, ipsum hic
-			doloremque odio modi sequi ab corporis perspiciatis ad eaque vitae
-			expedita voluptatibus commodi officiis non debitis. Nesciunt.
-		</div>
+		<>
+			<section className="relative bg-gradient-to-br from-teal-200/10 via-slate-100/0 to-slate-200/10 pt-44 pb-24 text-center">
+				<div className="container mx-auto max-w-2xl px-4">
+					<h1 className="fade-in mb-6 font-bold text-4xl text-slate-800 md:text-5xl">
+						Simplify Your Business Finance
+					</h1>
+					<p className="fade-in mb-8 text-gray-500 text-lg delay-1">
+						All-in-one financial management platform designed specifically for{" "}
+						<span className="group relative cursor-help border-gray-400 border-b border-dotted">
+							UMKM
+							<span className="-translate-x-1/2 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-56 rounded bg-gray-900 p-2 text-sm text-white opacity-0 transition-opacity group-hover:opacity-100">
+								Usaha Mikro Kecil dan Menengah (Micro, Small and Medium
+								Enterprises)
+							</span>
+						</span>
+						. Track, analyze, and grow your business effortlessly.
+					</p>
+					<div className="fade-in delay-2">
+						<a
+							href="https://umkm.enpitsu.my.id/"
+							className="inline-block rounded-full bg-teal-600 px-8 py-3 font-semibold text-white transition hover:bg-teal-700"
+						>
+							Try Free Demo
+						</a>
+					</div>
+					<div className="fade-in mx-auto mt-10 h-3 w-full max-w-md overflow-hidden rounded bg-gray-100 delay-3">
+						<div
+							className="h-full rounded bg-gradient-to-r from-teal-500 to-teal-700 transition-all duration-700"
+							style={{ width: "65%" }}
+						/>
+					</div>
+					<p className="fade-in mt-2 text-gray-500 text-sm delay-3">
+						65% of onboarding completed
+					</p>
+				</div>
+			</section>
+
+			<section id="features" className="section features bg-white py-20">
+				<div className="container mx-auto max-w-6xl px-4">
+					<h2 className="section-title mb-2 text-center font-bold text-3xl text-slate-700">
+						Choose Your Financial Journey
+					</h2>
+					<p className="section-subtitle mb-12 text-center text-gray-500">
+						Select the package that matches your business needs and grow at your
+						own pace
+					</p>
+					<div className="features-grid grid gap-8 md:grid-cols-3">
+						{/* Beginner */}
+						<div className="fade-in feature-card bright rounded-lg border-yellow-400 border-t-4 bg-white p-8 text-center shadow">
+							{/* <FaPiggyBank className="text-yellow-400 mx-auto text-4xl mb-4" /> */}
+							<h3 className="mb-2 font-semibold text-slate-700 text-xl">
+								Beginner
+							</h3>
+							<p className="mb-4 text-gray-500">
+								Perfect for startups and small businesses. Simple cash flow
+								tracking with intuitive interface.
+							</p>
+							<a
+								href="learn-more/beginner-learnmore.html"
+								className="btn btn-outline inline-block rounded-full border-2 border-teal-600 px-5 py-2 font-semibold text-teal-600 transition hover:bg-teal-600 hover:text-white"
+							>
+								Learn More
+							</a>
+						</div>
+						{/* Intermediate */}
+						<div className="fade-in feature-card rounded-lg border-teal-500 border-t-4 bg-white p-8 text-center shadow delay-1">
+							{/* <FaChartPie className="text-teal-500 mx-auto text-4xl mb-4" /> */}
+							<h3 className="mb-2 font-semibold text-slate-700 text-xl">
+								Intermediate
+							</h3>
+							<p className="mb-4 text-gray-500">
+								Advanced dashboard with visual reports to help you understand
+								your business performance.
+							</p>
+							<a
+								href="learn-more/intermediate-learnmore.html"
+								className="btn btn-outline inline-block rounded-full border-2 border-teal-600 px-5 py-2 font-semibold text-teal-600 transition hover:bg-teal-600 hover:text-white"
+							>
+								Learn More
+							</a>
+						</div>
+						{/* Advanced */}
+						<div className="fade-in feature-card advanced rounded-lg border-slate-700 border-t-4 bg-white p-8 text-center shadow delay-2">
+							{/* <FaChartLine className="text-slate-700 mx-auto text-4xl mb-4" /> */}
+							<h3 className="mb-2 font-semibold text-slate-700 text-xl">
+								Advanced
+							</h3>
+							<p className="mb-4 text-gray-500">
+								Professional tools with deep analytics for growing businesses
+								ready to scale.
+							</p>
+							<a
+								href="app/professional-ui.html"
+								className="btn btn-outline inline-block rounded-full border-2 border-teal-600 px-5 py-2 font-semibold text-teal-600 transition hover:bg-teal-600 hover:text-white"
+							>
+								Learn More
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section className="trust-badges bg-gray-100 py-20">
+				<div className="container mx-auto max-w-6xl px-4">
+					<h2 className="section-title mb-2 text-center font-bold text-3xl text-slate-700">
+						Trusted by Thousands of UMKM
+					</h2>
+					<p className="section-subtitle mb-12 text-center text-gray-500">
+						Our platform meets the highest standards for Indonesian small
+						businesses
+					</p>
+					<div className="badges-container mt-8 flex flex-wrap justify-center gap-12">
+						<div className="fade-in badge flex flex-col items-center">
+							{/* <FaShieldAlt className="text-3xl text-teal-500 mb-3" /> */}
+							<p className="font-semibold text-slate-700">SAK EMKM Ready</p>
+						</div>
+						<div className="fade-in badge flex flex-col items-center delay-1">
+							{/* <FaHandHoldingUsd className="text-3xl text-teal-500 mb-3" /> */}
+							<p className="font-semibold text-slate-700">KUR Ready</p>
+						</div>
+						<div className="fade-in badge flex flex-col items-center delay-2">
+							{/* <FaLock className="text-3xl text-teal-500 mb-3" /> */}
+							<p className="font-semibold text-slate-700">Data Encrypted</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section className="testimonials section bg-white py-20">
+				<div className="container mx-auto max-w-6xl px-4">
+					<h2 className="section-title mb-2 text-center font-bold text-3xl text-slate-700">
+						What Our Users Say
+					</h2>
+					<p className="section-subtitle mb-12 text-center text-gray-500">
+						Hear from business owners who transformed their financial management
+					</p>
+					<div className="testimonials-grid grid gap-8 md:grid-cols-3">
+						{testimonials.map((t, i) => (
+							<div
+								key={t.img}
+								className={`rounded-lg bg-gray-100 p-8 shadow fade-in${i === 1 ? " delay-1" : i === 2 ? " delay-2" : ""} testimonial-card`}
+							>
+								<p className="quote mb-6 text-slate-700 italic">{t.quote}</p>
+								<div className="author flex items-center">
+									<img
+										src={t.img}
+										alt={t.name}
+										className="mr-4 h-12 w-12 rounded-full object-cover"
+									/>
+									<div className="author-info">
+										<h4 className="mb-1 font-semibold text-slate-700">
+											{t.name}
+										</h4>
+										<p className="text-gray-500 text-sm">{t.role}</p>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<section id="pricing" className="pricing section bg-gray-100 py-20">
+				<div className="container mx-auto max-w-6xl px-4">
+					<h2 className="section-title mb-2 text-center font-bold text-3xl text-slate-700">
+						Simple, Transparent Pricing
+					</h2>
+					<p className="section-subtitle mb-12 text-center text-gray-500">
+						Choose the plan that works for your business size and needs
+					</p>
+					<div className="pricing-grid grid gap-8 md:grid-cols-3">
+						{/* One-Time */}
+						<div className="pricing-card fade-in rounded-lg bg-white p-8 shadow">
+							<h3 className="mb-2 font-semibold text-slate-700 text-xl">
+								One-Time Purchase
+							</h3>
+							<div className="price mb-4 font-bold text-3xl text-teal-600">
+								Rp 69.000{" "}
+								<span className="font-normal text-base text-gray-500">
+									one time
+								</span>
+							</div>
+							<ul className="pricing-features mb-6">
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									Lifetime access to Beginner features
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}1 year of
+									updates
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									Email support
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									Basic reports
+								</li>
+							</ul>
+							<a
+								href="feature-pricing/feature-pricing.html"
+								className="btn btn-outline inline-block rounded-full border-2 border-teal-600 px-5 py-2 font-semibold text-teal-600 transition hover:bg-teal-600 hover:text-white"
+							>
+								Get Started
+							</a>
+						</div>
+						{/* Annual Subscription */}
+						<div className="pricing-card best-value fade-in relative rounded-lg border-2 border-yellow-400 bg-white p-8 shadow delay-1">
+							<div className="-top-4 best-value-tag absolute right-6 rounded-full bg-yellow-400 px-4 py-1 font-semibold text-slate-700 text-xs">
+								Best Value
+							</div>
+							<h3 className="mb-2 font-semibold text-slate-700 text-xl">
+								Annual Subscription
+							</h3>
+							<div className="price mb-4 font-bold text-3xl text-teal-600">
+								Rp 55.000{" "}
+								<span className="font-normal text-base text-gray-500">
+									/ month
+								</span>
+							</div>
+							<ul className="pricing-features mb-6">
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									Access to all Intermediate features
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									Continuous updates
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									Priority support
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									Advanced analytics
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									KUR application assistance
+								</li>
+							</ul>
+							<a
+								href="feature-pricing/feature-pricing.html"
+								className="btn btn-primary inline-block rounded-full bg-teal-600 px-5 py-2 font-semibold text-white transition hover:bg-teal-700"
+							>
+								Get Started
+							</a>
+						</div>
+						{/* Enterprise */}
+						<div className="pricing-card fade-in rounded-lg bg-white p-8 shadow delay-2">
+							<h3 className="mb-2 font-semibold text-slate-700 text-xl">
+								Enterprise
+							</h3>
+							<div className="price mb-4 font-bold text-3xl text-teal-600">
+								Custom
+							</div>
+							<ul className="pricing-features mb-6">
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									All Advanced features
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									Dedicated account manager
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									24/7 support
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									Custom integrations
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									Team access
+								</li>
+								<li className="mb-2 flex items-center">
+									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									SAK EMKM compliance
+								</li>
+							</ul>
+							<a
+								href="https://wa.me/6285157449391"
+								className="btn btn-outline inline-block rounded-full border-2 border-teal-600 px-5 py-2 font-semibold text-teal-600 transition hover:bg-teal-600 hover:text-white"
+							>
+								Contact Sales
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</>
 	);
 }
 
