@@ -1,3 +1,13 @@
+import {
+	BadgeCheck,
+	BadgeDollarSign,
+	ChartNoAxesCombined,
+	ChartPie,
+	HandCoins,
+	Lock,
+	ShieldCheck,
+} from "lucide-react";
+
 const testimonials = [
 	{
 		quote:
@@ -24,7 +34,8 @@ const testimonials = [
 export default function Home() {
 	return (
 		<>
-			<section className="relative bg-gradient-to-br from-teal-200/10 via-slate-100/0 to-slate-200/10 pt-44 pb-24 text-center">
+			{/* <section className="relative pt-44 pb-24 text-center"> */}
+			<section className="flex h-screen items-center bg-gray-100/50 text-center">
 				<div className="container mx-auto max-w-2xl px-4">
 					<h1 className="fade-in mb-6 font-bold text-4xl text-slate-800 md:text-5xl">
 						Simplify Your Business Finance
@@ -48,7 +59,7 @@ export default function Home() {
 							Try Free Demo
 						</a>
 					</div>
-					<div className="fade-in mx-auto mt-10 h-3 w-full max-w-md overflow-hidden rounded bg-gray-100 delay-3">
+					{/* <div className="fade-in mx-auto mt-10 h-3 w-full max-w-md overflow-hidden rounded bg-gray-100 delay-3">
 						<div
 							className="h-full rounded bg-gradient-to-r from-teal-500 to-teal-700 transition-all duration-700"
 							style={{ width: "65%" }}
@@ -56,7 +67,7 @@ export default function Home() {
 					</div>
 					<p className="fade-in mt-2 text-gray-500 text-sm delay-3">
 						65% of onboarding completed
-					</p>
+					</p> */}
 				</div>
 			</section>
 
@@ -72,7 +83,10 @@ export default function Home() {
 					<div className="features-grid grid gap-8 md:grid-cols-3">
 						{/* Beginner */}
 						<div className="fade-in feature-card bright rounded-lg border-yellow-400 border-t-4 bg-white p-8 text-center shadow">
-							{/* <FaPiggyBank className="text-yellow-400 mx-auto text-4xl mb-4" /> */}
+							<HandCoins
+								size={45}
+								className="mx-auto mb-4 text-4xl text-yellow-400"
+							/>
 							<h3 className="mb-2 font-semibold text-slate-700 text-xl">
 								Beginner
 							</h3>
@@ -89,7 +103,10 @@ export default function Home() {
 						</div>
 						{/* Intermediate */}
 						<div className="fade-in feature-card rounded-lg border-teal-500 border-t-4 bg-white p-8 text-center shadow delay-1">
-							{/* <FaChartPie className="text-teal-500 mx-auto text-4xl mb-4" /> */}
+							<ChartPie
+								size={45}
+								className="mx-auto mb-4 text-4xl text-teal-500"
+							/>
 							<h3 className="mb-2 font-semibold text-slate-700 text-xl">
 								Intermediate
 							</h3>
@@ -106,7 +123,10 @@ export default function Home() {
 						</div>
 						{/* Advanced */}
 						<div className="fade-in feature-card advanced rounded-lg border-slate-700 border-t-4 bg-white p-8 text-center shadow delay-2">
-							{/* <FaChartLine className="text-slate-700 mx-auto text-4xl mb-4" /> */}
+							<ChartNoAxesCombined
+								size={45}
+								className="mx-auto mb-4 text-4xl text-slate-700"
+							/>
 							<h3 className="mb-2 font-semibold text-slate-700 text-xl">
 								Advanced
 							</h3>
@@ -136,15 +156,18 @@ export default function Home() {
 					</p>
 					<div className="badges-container mt-8 flex flex-wrap justify-center gap-12">
 						<div className="fade-in badge flex flex-col items-center">
-							{/* <FaShieldAlt className="text-3xl text-teal-500 mb-3" /> */}
+							<ShieldCheck size={50} className="mb-3 text-3xl text-teal-500" />
 							<p className="font-semibold text-slate-700">SAK EMKM Ready</p>
 						</div>
 						<div className="fade-in badge flex flex-col items-center delay-1">
-							{/* <FaHandHoldingUsd className="text-3xl text-teal-500 mb-3" /> */}
+							<BadgeDollarSign
+								size={50}
+								className="mb-3 text-3xl text-teal-500"
+							/>
 							<p className="font-semibold text-slate-700">KUR Ready</p>
 						</div>
 						<div className="fade-in badge flex flex-col items-center delay-2">
-							{/* <FaLock className="text-3xl text-teal-500 mb-3" /> */}
+							<Lock size={50} className="mb-3 text-3xl text-teal-500" />
 							<p className="font-semibold text-slate-700">Data Encrypted</p>
 						</div>
 					</div>
@@ -207,19 +230,18 @@ export default function Home() {
 							</div>
 							<ul className="pricing-features mb-6">
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									Lifetime access to Beginner features
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}1 year of
-									updates
+									<BadgeCheck className="mr-2 text-teal-500" />1 year of updates
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									Email support
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									Basic reports
 								</li>
 							</ul>
@@ -246,23 +268,23 @@ export default function Home() {
 							</div>
 							<ul className="pricing-features mb-6">
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									Access to all Intermediate features
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									Continuous updates
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									Priority support
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									Advanced analytics
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									KUR application assistance
 								</li>
 							</ul>
@@ -283,27 +305,27 @@ export default function Home() {
 							</div>
 							<ul className="pricing-features mb-6">
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									All Advanced features
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									Dedicated account manager
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									24/7 support
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									Custom integrations
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									Team access
 								</li>
 								<li className="mb-2 flex items-center">
-									{/* <FaCheck className="text-teal-500 mr-2" /> */}
+									<BadgeCheck className="mr-2 text-teal-500" />
 									SAK EMKM compliance
 								</li>
 							</ul>
