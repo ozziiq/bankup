@@ -1,5 +1,6 @@
 import { auth } from "@/server/auth";
 import { redirect } from "next/navigation";
+import { OnboardingInterface } from "../_components/onboarding";
 
 export default async function MainAppLayout({
 	children,
@@ -11,6 +12,8 @@ export default async function MainAppLayout({
 	// if (true) return (
 	//     <>Ini onboarding</>
 	// )
+
+	return <OnboardingInterface />;
 
 	return children;
 }
