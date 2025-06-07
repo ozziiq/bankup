@@ -208,9 +208,15 @@ export default function Pricing() {
 						<tbody>
 							{COMPARISON_ROWS.map((row) => (
 								<tr key={row.otp} className="hover:bg-gray-50">
-									<td className="border-b border-b-gray-100 px-6 py-3">{row.feature}</td>
-									<td className="border-b border-b-gray-100 px-6 py-3">{row.otp}</td>
-									<td className="border-b border-b-gray-100 px-6 py-3">{row.subscription}</td>
+									<td className="border-b border-b-gray-100 px-6 py-3">
+										{row.feature}
+									</td>
+									<td className="border-b border-b-gray-100 px-6 py-3">
+										{row.otp}
+									</td>
+									<td className="border-b border-b-gray-100 px-6 py-3">
+										{row.subscription}
+									</td>
 								</tr>
 							))}
 						</tbody>
@@ -223,14 +229,16 @@ export default function Pricing() {
 			{modalOpen && (
 				<div
 					ref={modalRef}
-					className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 ${modalOpen ? "opacity-100" : "pointer-events-none opacity-0"
-						}`}
+					className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 transition-opacity duration-300 ${
+						modalOpen ? "opacity-100" : "pointer-events-none opacity-0"
+					}`}
 				>
 					<div
-						className={`relative w-full max-w-md transform rounded-lg bg-white p-8 text-center shadow-lg transition-all duration-300 ${modalOpen
-							? "translate-y-0 scale-100 opacity-100"
-							: "pointer-events-none translate-y-4 scale-95 opacity-0"
-							}`}
+						className={`relative w-full max-w-md transform rounded-lg bg-white p-8 text-center shadow-lg transition-all duration-300 ${
+							modalOpen
+								? "translate-y-0 scale-100 opacity-100"
+								: "pointer-events-none translate-y-4 scale-95 opacity-0"
+						}`}
 						style={{
 							animation: modalOpen ? "modalFadeIn 0.25s" : "modalFadeOut 0.25s",
 						}}

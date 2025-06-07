@@ -53,7 +53,7 @@ export default function Home() {
 					</p>
 					<div className="fade-in delay-2">
 						<a
-							href="https://umkm.enpitsu.my.id/"
+							href="/demo"
 							className="inline-block rounded-full bg-teal-600 px-8 py-3 font-semibold text-white transition hover:bg-teal-700"
 						>
 							Try Free Demo
