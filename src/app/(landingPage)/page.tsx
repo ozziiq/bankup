@@ -7,6 +7,7 @@ import {
 	Lock,
 	ShieldCheck,
 } from "lucide-react";
+import Link from "next/link";
 
 const testimonials = [
 	{
@@ -94,12 +95,12 @@ export default function Home() {
 								Perfect for startups and small businesses. Simple cash flow
 								tracking with intuitive interface.
 							</p>
-							<a
-								href="learn-more/beginner-learnmore.html"
+							<Link
+								href="/learn-more/beginner"
 								className="btn btn-outline inline-block rounded-full border-2 border-teal-600 px-5 py-2 font-semibold text-teal-600 transition hover:bg-teal-600 hover:text-white"
 							>
 								Learn More
-							</a>
+							</Link>
 						</div>
 						{/* Intermediate */}
 						<div className="fade-in feature-card rounded-lg border-teal-500 border-t-4 bg-white p-8 text-center shadow delay-1">
@@ -223,7 +224,7 @@ export default function Home() {
 								One-Time Purchase
 							</h3>
 							<div className="price mb-4 font-bold text-3xl text-teal-600">
-								Rp 69.000{" "}
+								Rp 0{" "}
 								<span className="font-normal text-base text-gray-500">
 									one time
 								</span>
@@ -245,12 +246,13 @@ export default function Home() {
 									Basic reports
 								</li>
 							</ul>
-							<a
-								href="feature-pricing/feature-pricing.html"
+
+							<Link
+								href="/pricing"
 								className="btn btn-outline inline-block rounded-full border-2 border-teal-600 px-5 py-2 font-semibold text-teal-600 transition hover:bg-teal-600 hover:text-white"
 							>
 								Get Started
-							</a>
+							</Link>
 						</div>
 						{/* Annual Subscription */}
 						<div className="pricing-card best-value fade-in relative rounded-lg border-2 border-yellow-400 bg-white p-8 shadow delay-1">
@@ -261,7 +263,7 @@ export default function Home() {
 								Annual Subscription
 							</h3>
 							<div className="price mb-4 font-bold text-3xl text-teal-600">
-								Rp 55.000{" "}
+								Rp 0{" "}
 								<span className="font-normal text-base text-gray-500">
 									/ month
 								</span>
@@ -288,12 +290,12 @@ export default function Home() {
 									KUR application assistance
 								</li>
 							</ul>
-							<a
-								href="feature-pricing/feature-pricing.html"
+							<Link
+								href="/pricing"
 								className="btn btn-primary inline-block rounded-full bg-teal-600 px-5 py-2 font-semibold text-white transition hover:bg-teal-700"
 							>
 								Get Started
-							</a>
+							</Link>
 						</div>
 						{/* Enterprise */}
 						<div className="pricing-card fade-in rounded-lg bg-white p-8 shadow delay-2">

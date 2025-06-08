@@ -8,7 +8,9 @@ import {
 	sessions,
 	users,
 	verificationTokens,
-} from "@/server/db/schema";
+} from "@/server/db/_main-schema";
+
+type Literacy = "beginner" | "intermediate" | "professional" | null;
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -21,14 +23,14 @@ declare module "next-auth" {
 		user: {
 			id: string;
 			// ...other properties
-			// role: UserRole;
+			literacyLevel: Literacy;
 		} & DefaultSession["user"];
 	}
 
-	// interface User {
-	//   // ...other properties
-	//   // role: UserRole;
-	// }
+	interface User {
+		// ...other properties
+		literacyLevel: Literacy;
+	}
 }
 
 /**
@@ -61,6 +63,7 @@ export const authConfig = {
 			user: {
 				...session.user,
 				id: user.id,
+				literacyLevel: user.literacyLevel,
 			},
 		}),
 	},

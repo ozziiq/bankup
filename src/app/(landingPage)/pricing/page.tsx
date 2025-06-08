@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 type PlanType = "otp" | "subscription";
@@ -9,7 +10,7 @@ const PRICING_CARDS = [
 		icon: "💎",
 		title: "One-Time Purchase",
 		desc: "Bayar sekali, akses selamanya. Cocok untuk usaha mikro & kecil.",
-		price: "Rp69.000",
+		price: "Rp0",
 		priceNote: "sekali bayar",
 		tooltip: "Rekomendasi untuk pemula",
 		features: [
@@ -28,8 +29,8 @@ const PRICING_CARDS = [
 		icon: "📈",
 		title: "Subscription",
 		desc: "Akses penuh, selalu update, cocok untuk usaha berkembang.",
-		price: "Rp55.000",
-		priceNote: "/bulan atau Rp499.000/tahun",
+		price: "Rp0",
+		priceNote: "/bulan atau Rp0/tahun",
 		tooltip: "Cocok untuk profesional",
 		features: [
 			"Akses Beginner, Intermediate, Advanced UI",
@@ -94,12 +95,12 @@ const MODAL_BUTTON_STYLE: Record<PlanType, string> = {
 };
 
 export default function Pricing() {
+	const modalRef = useRef<HTMLDivElement>(null);
 	const [modalOpen, setModalOpen] = useState(false);
 	// biome-ignore lint/style/noNonNullAssertion: <explanation>
 	const [selectedPlan, setSelectedPlan] = useState<PlanType>(null!);
 
 	// Close modal on outside click
-	const modalRef = useRef<HTMLDivElement>(null);
 	useEffect(() => {
 		if (!modalOpen) return;
 		const handle = (e: MouseEvent) => {
@@ -114,12 +115,6 @@ export default function Pricing() {
 	const openModal = (plan: PlanType) => {
 		setSelectedPlan(plan);
 		setModalOpen(true);
-		localStorage.setItem("selectedPlan", plan ?? "");
-	};
-
-	// Modal button: proceed to register
-	const proceedToRegister = () => {
-		window.location.href = `/register?plan=${selectedPlan}`;
 	};
 
 	return (
@@ -263,13 +258,12 @@ export default function Pricing() {
 							Yuk lanjut daftar dan mulai kelola keuangan usaha Anda dengan
 							lebih baik!
 						</p>
-						<button
-							className={`w-full rounded py-3 font-semibold text-white transition ${MODAL_BUTTON_STYLE[selectedPlan]}`}
-							onClick={proceedToRegister}
-							type="button"
+						<Link
+							href={`/login?plan=${selectedPlan}`}
+							className={`w-full rounded p-3 font-semibold text-white transition ${MODAL_BUTTON_STYLE[selectedPlan]}`}
 						>
 							Lanjut Daftar
-						</button>
+						</Link>
 					</div>
 					{/* Custom modal fade keyframes for extra smoothness */}
 					<style>
