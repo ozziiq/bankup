@@ -8,9 +8,11 @@ import { OnboardingInterface } from "../_components/onboarding";
 import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {
-	title: "aKURasi - Simplify Your Business Finance",
+	title: {
+		default: "aKURasi - Simplify Your Business Finance",
+		template: "%s | aKURasi",
+	},
 	description: "Insert proper description here",
-	icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default async function MainAppLayout({
@@ -22,10 +24,10 @@ export default async function MainAppLayout({
 
 	if (!userData.user.literacyLevel)
 		return (
-			<>
+			<TRPCReactProvider>
 				<OnboardingInterface />
 				<Toaster richColors />
-			</>
+			</TRPCReactProvider>
 		);
 
 	return (

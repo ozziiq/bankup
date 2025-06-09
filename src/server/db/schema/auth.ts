@@ -3,27 +3,7 @@ import { index, pgEnum, primaryKey } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "next-auth/adapters";
 
 import { createTable } from "./_table";
-
-// export const posts = createTable(
-// 	"post",
-// 	(d) => ({
-// 		id: d.integer().primaryKey().generatedByDefaultAsIdentity(),
-// 		name: d.varchar({ length: 256 }),
-// 		createdById: d
-// 			.varchar({ length: 255 })
-// 			.notNull()
-// 			.references(() => users.id),
-// 		createdAt: d
-// 			.timestamp({ withTimezone: true })
-// 			.default(sql`CURRENT_TIMESTAMP`)
-// 			.notNull(),
-// 		updatedAt: d.timestamp({ withTimezone: true }).$onUpdate(() => new Date()),
-// 	}),
-// 	(t) => [
-// 		index("created_by_idx").on(t.createdById),
-// 		index("name_idx").on(t.name),
-// 	],
-// );
+import { companyHolders } from "./company";
 
 export const literacyLevelEnum = pgEnum("literacyLevel", [
 	"beginner",
@@ -51,6 +31,7 @@ export const users = createTable("user", (d) => ({
 
 export const usersRelations = relations(users, ({ many }) => ({
 	accounts: many(accounts),
+	companies: many(companyHolders),
 }));
 
 export const accounts = createTable(
