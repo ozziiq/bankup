@@ -1,5 +1,6 @@
 "use client";
 
+import { env } from "@/env";
 import { ChartLine, Rows3 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -37,7 +38,7 @@ export const Navbar = () => {
 					onClick={() => setMenuOpen(false)}
 				>
 					<ChartLine className="mr-2" />
-					aKURasi
+					{env.NEXT_PUBLIC_BRAND_NAME}
 				</Link>
 				<button
 					className="text-2xl text-gray-700 lg:hidden"
@@ -102,7 +103,7 @@ export const Footer = () => (
 			<div className="mb-10 grid gap-8 md:grid-cols-4">
 				<div>
 					<h3 className="mb-4 font-semibold text-lg text-yellow-400">
-						aKURasi
+						{env.NEXT_PUBLIC_BRAND_NAME}
 					</h3>
 					<p className="mb-4">
 						Simplifying financial management for Indonesian small businesses
@@ -292,7 +293,8 @@ export const Footer = () => (
 				</div>
 			</div>
 			<div className="border-white/10 border-t pt-6 text-center text-sm text-white/70">
-				&copy; {new Date().getFullYear()} aKURasi. All rights reserved. |{" "}
+				&copy; {new Date().getFullYear()} {env.NEXT_PUBLIC_BRAND_NAME}. All
+				rights reserved. |{" "}
 				<a href="/somewhere-meaningful" className="hover:underline">
 					Privacy Policy
 				</a>{" "}

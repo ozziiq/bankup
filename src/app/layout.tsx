@@ -1,12 +1,17 @@
 import "@/styles/globals.css";
 
+import { env } from "@/env";
+
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
 // import { TRPCReactProvider } from "@/trpc/react";
 
 export const metadata: Metadata = {
-	title: "aKURasi - Simplify Your Business Finance",
+	title: {
+		default: `${env.NEXT_PUBLIC_BRAND_NAME} - Simplify Your Business Finance`,
+		template: `%s | ${env.NEXT_PUBLIC_BRAND_NAME}`,
+	},
 	description: "Insert proper description here",
 	icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
