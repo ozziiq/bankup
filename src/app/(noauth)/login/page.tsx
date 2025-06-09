@@ -1,3 +1,4 @@
+import { googleLogin } from "@/app/_components/actions";
 import { Button } from "@/components/ui/button";
 import { auth, signIn } from "@/server/auth";
 import { redirect } from "next/navigation";
@@ -9,12 +10,7 @@ export default async function LoginPage() {
 	if (!session) {
 		return (
 			<main className="flex h-screen flex-col items-center justify-center gap-24 bg-gray-100">
-				<form
-					action={async () => {
-						"use server";
-						await signIn("google");
-					}}
-				>
+				<form action={googleLogin}>
 					<Button
 						type="submit"
 						className="flex flex-row items-center gap-5 rounded-full px-10 py-7 font-semibold text-lg no-underline transition"
