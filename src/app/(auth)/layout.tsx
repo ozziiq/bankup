@@ -1,5 +1,19 @@
+import type { Metadata } from "next";
+
+import { Toaster } from "@/components/ui/sonner";
 import { auth } from "@/server/auth";
 import { redirect } from "next/navigation";
+import { OnboardingInterface } from "../_components/onboarding";
+
+import { TRPCReactProvider } from "@/trpc/react";
+
+export const metadata: Metadata = {
+	title: {
+		default: "aKURasi - Simplify Your Business Finance",
+		template: "%s | aKURasi",
+	},
+	description: "Insert proper description here",
+};
 
 export default async function MainAppLayout({
 	children,
@@ -8,9 +22,18 @@ export default async function MainAppLayout({
 
 	if (!userData) redirect("/login");
 
-	// if (true) return (
-	//     <>Ini onboarding</>
-	// )
+	if (!userData.user.literacyLevel)
+		return (
+			<TRPCReactProvider>
+				<OnboardingInterface />
+				<Toaster richColors />
+			</TRPCReactProvider>
+		);
 
-	return children;
+	return (
+		<TRPCReactProvider>
+			{children}
+			<Toaster richColors />
+		</TRPCReactProvider>
+	);
 }

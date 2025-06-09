@@ -23,7 +23,8 @@ export const Navbar = () => {
 		navLinksRef.current.addEventListener("click", handler);
 
 		return () => {
-			navLinksRef.current.removeEventListener("click", handler);
+			if (navLinksRef.current)
+				navLinksRef.current.removeEventListener("click", handler);
 		};
 	}, []);
 
