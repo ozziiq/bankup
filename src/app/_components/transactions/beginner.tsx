@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/tooltip";
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { LoaderCircle } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
@@ -608,6 +609,9 @@ export const BeginnerModeForm: React.FC = () => {
 											disabled={saveReport.isPending}
 											onClick={handleSubmit(onSubmit)}
 										>
+											{saveReport.isPending ? (
+												<LoaderCircle className="mr-1 w-2 animate-spin" />
+											) : null}
 											Hitung Laporan
 										</Button>
 									)}

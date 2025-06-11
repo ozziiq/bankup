@@ -1,5 +1,13 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+	Card,
+	CardAction,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import {
 	Tooltip,
 	TooltipContent,
@@ -104,6 +112,12 @@ export default async function DetailedTransactionReportPage({
 			modalAwal: finances.modalAwal,
 			labaDitahan: finances.labaDitahan,
 			labaBerjalan: finances.labaBerjalan,
+
+			// Metadata
+			financeId: finances.id,
+			author: users.name,
+			authorImage: users.image,
+			createdAt: finances.createdAt,
 		})
 		.from(finances)
 		.innerJoin(companyHolders, eq(finances.companyId, companyHolders.companyId))
@@ -160,6 +174,28 @@ export default async function DetailedTransactionReportPage({
 
 	return (
 		<Card className="overflow-hidden rounded-xl shadow-lg">
+			<CardHeader>
+				<CardTitle>Laporan Keuangan #{data.financeId}</CardTitle>
+				<CardDescription>
+					{/* biome-ignore lint/style/noNonNullAssertion: <explanation> */}
+					{data.createdAt!.toLocaleString("id-ID")}
+				</CardDescription>
+				<CardAction>
+					<div className="flex items-center gap-2">
+						<Avatar>
+							{/* biome-ignore lint/style/noNonNullAssertion: <explanation> */}
+							<AvatarImage src={data.authorImage!} />
+							<AvatarFallback className="uppercase">
+								{data.author ? data.author.slice(0, 2) : "N/A"}
+							</AvatarFallback>
+						</Avatar>
+						<div className="flex flex-col">
+							<p className="text-sm">{data.author ?? "N/A"}</p>
+							<p className="font-semibold text-sm">Author</p>
+						</div>
+					</div>
+				</CardAction>
+			</CardHeader>
 			<CardContent>
 				<div className="animate-fade-in">
 					<Card className="mb-6 border-teal-500 border-l-4 bg-blue-50">

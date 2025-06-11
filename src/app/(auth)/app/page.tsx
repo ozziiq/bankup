@@ -11,7 +11,12 @@ import {
 
 import { auth } from "@/server/auth";
 import { db } from "@/server/db";
-import { companyHolders, finances, users } from "@/server/db/_main-schema";
+import {
+	companies,
+	companyHolders,
+	finances,
+	users,
+} from "@/server/db/_main-schema";
 import { eq } from "drizzle-orm";
 
 export const metadata: Metadata = {
@@ -23,6 +28,17 @@ export default async function AppMainPage() {
 
 	// biome-ignore lint/style/noNonNullAssertion: <explanation>
 	const currentUserId = userData!.user.id;
+
+	const companyRaw = await db
+		.select({
+			name: companies.name,
+		})
+		.from(companies)
+		.innerJoin(companyHolders, eq(companies.id, companyHolders.companyId))
+		.where(eq(companyHolders.userId, currentUserId));
+	const company = companyRaw[0];
+
+	if (!company) throw new Error("This shouldn't happen");
 
 	const result = await db
 		.select({
@@ -57,10 +73,15 @@ export default async function AppMainPage() {
 	const totalBeban = new Intl.NumberFormat("id-ID").format(akumulasiBeban);
 
 	return (
-		<div className="space-y-1">
-			<h2 className="scroll-m-20 pb-2 font-semibold text-3xl tracking-tight first:mt-0">
-				Dashboard
-			</h2>
+		<div className="space-y-4">
+			<div className="space-y-0.5">
+				<h2 className="scroll-m-20 font-semibold text-3xl tracking-tight first:mt-0">
+					Dashboard
+				</h2>
+				<p className="scroll-m-20 tracking-tight">
+					Nama Usaha: <b>{company.name}</b>
+				</p>
+			</div>
 
 			<div className="flex w-full flex-col gap-4 md:flex-row">
 				<Card className="w-full border-t-4 border-t-teal-600">
