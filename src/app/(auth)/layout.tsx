@@ -30,7 +30,7 @@ export default async function MainAppLayout({
 	return (
 		<TRPCReactProvider>
 			{userData.user.literacyLevel !== "professional" ? (
-				<div className="border-b bg-zinc-300/10 transition">
+				<div className="border-b bg-white transition">
 					<div className="flex min-h-16 items-center justify-between px-4">
 						<Link
 							href="/app"
@@ -44,7 +44,7 @@ export default async function MainAppLayout({
 							<MainNavNonProfessional />
 						</div>
 
-						<div className="px-4">
+						<div className="hidden px-4 md:block">
 							<NavProfile
 								// biome-ignore lint/style/noNonNullAssertion: <explanation>
 								name={userData.user.name!}
@@ -57,7 +57,14 @@ export default async function MainAppLayout({
 					</div>
 				</div>
 			) : null}
-			{children}
+
+			{userData.user.literacyLevel !== "professional" ? (
+				<div className="min-h-[87vh] bg-gray-200/40 px-10 py-6 md:px-32">
+					{children}
+				</div>
+			) : (
+				children
+			)}
 			<Toaster richColors />
 		</TRPCReactProvider>
 	);
