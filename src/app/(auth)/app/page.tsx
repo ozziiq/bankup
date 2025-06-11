@@ -9,6 +9,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 
+import { formatIDR } from "@/lib/utils";
 import { auth } from "@/server/auth";
 import { db } from "@/server/db";
 import {
@@ -53,12 +54,11 @@ export default async function AppMainPage() {
 		.innerJoin(users, eq(users.id, companyHolders.userId))
 		.where(eq(companyHolders.userId, currentUserId));
 
-	const akumulasiPendapatan = result
+	const pendapatan = result
 		.map((d) => (d.labaBerjalan ? Number.parseFloat(d.labaBerjalan) : 0))
 		.reduce((curr, acc) => curr + acc, 0);
-	const pendapatan = new Intl.NumberFormat("id-ID").format(akumulasiPendapatan);
 
-	const akumulasiBeban = result
+	const beban = result
 		.map((d) => [
 			d.hpp ? Number.parseFloat(d.hpp) : 0,
 			d.bebanGaji ? Number.parseFloat(d.bebanGaji) : 0,
@@ -70,7 +70,6 @@ export default async function AppMainPage() {
 				accOuter + innerArray.reduce((accInner, value) => accInner + value, 0),
 			0,
 		);
-	const totalBeban = new Intl.NumberFormat("id-ID").format(akumulasiBeban);
 
 	return (
 		<div className="space-y-4">
@@ -93,7 +92,7 @@ export default async function AppMainPage() {
 					</CardHeader>
 					<CardContent>
 						<p className="text-center font-semibold text-3xl text-teal-600">
-							Rp {pendapatan}
+							{formatIDR(pendapatan)}
 						</p>
 					</CardContent>
 					<CardFooter className="justify-center">
@@ -111,7 +110,7 @@ export default async function AppMainPage() {
 					</CardHeader>
 					<CardContent>
 						<p className="text-center font-semibold text-3xl text-orange-600">
-							Rp {totalBeban}
+							{formatIDR(beban)}
 						</p>
 					</CardContent>
 					<CardFooter className="justify-center">

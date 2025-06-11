@@ -23,6 +23,7 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { calculateResults, formatIDR } from "@/lib/utils";
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoaderCircle } from "lucide-react";
@@ -34,10 +35,7 @@ import {
 	FiBarChart2,
 	FiCheckCircle,
 	FiCreditCard,
-	FiDollarSign,
 	FiFile,
-	FiFilePlus,
-	FiFileText,
 	FiHelpCircle,
 	FiPieChart,
 	FiTrendingUp,
@@ -185,52 +183,7 @@ export const BeginnerModeForm: React.FC = () => {
 		setProgress(progressValue);
 	}, [currentStep]);
 
-	// Calculate results
-	const calculateResults = () => {
-		const totalBeban =
-			formValues.gaji +
-			formValues.listrik +
-			formValues.sewa +
-			formValues.bahanBaku;
-		const labaBersih = formValues.pendapatan - totalBeban;
-
-		const totalAset =
-			formValues.kas +
-			formValues.piutang +
-			formValues.persediaan +
-			formValues.asetTetap;
-		const totalUtang = formValues.utangUsaha + formValues.pinjaman;
-		const totalModal =
-			formValues.modalAwal + formValues.investasiTambahan + labaBersih;
-		const neraca = totalAset - (totalUtang + totalModal);
-
-		const arusKasOperasi = formValues.pendapatan - totalBeban;
-		const arusKasInvestasi = -formValues.asetTetap;
-		const arusKasPendanaan = formValues.investasiTambahan - formValues.pinjaman;
-
-		return {
-			labaBersih,
-			totalAset,
-			totalUtang,
-			totalModal,
-			neraca,
-			arusKasOperasi,
-			arusKasInvestasi,
-			arusKasPendanaan,
-			totalBeban,
-		};
-	};
-
-	const results = calculateResults();
-
-	// Format to IDR currency
-	const formatIDR = (value: number) => {
-		return new Intl.NumberFormat("id-ID", {
-			style: "currency",
-			currency: "IDR",
-			minimumFractionDigits: 0,
-		}).format(value);
-	};
+	const results = calculateResults(formValues);
 
 	// Navigation functions
 	const nextStep = async () => {
