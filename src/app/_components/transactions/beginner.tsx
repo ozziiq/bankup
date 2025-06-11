@@ -144,7 +144,7 @@ export const BeginnerModeForm: React.FC = () => {
 			toast.success("Laporan tersimpan!");
 			setShowResults(true);
 
-			setTimeout(() => void setShowModal(true), 750);
+			setTimeout(() => void setShowModal(true), 450);
 		},
 		onError: () => toast.error("Gagal menyimpan laporan"),
 	});
@@ -724,12 +724,12 @@ export const BeginnerModeForm: React.FC = () => {
 									<Button className="bg-teal-600 hover:bg-teal-700">
 										<FiFile className="mr-2" /> Unduh PDF
 									</Button>
-									<Button
+									{/* <Button
 										variant="outline"
 										className="border-teal-600 text-teal-600 hover:bg-teal-50"
 									>
 										<FiFilePlus className="mr-2" /> Unduh Excel
-									</Button>
+									</Button> */}
 									<Button variant="outline" onClick={resetForm}>
 										Buat Laporan Baru
 									</Button>
