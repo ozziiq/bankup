@@ -1,13 +1,4 @@
 import { BeginnerModeForm } from "@/app/_components/transactions/beginner";
-import {
-	Card,
-	CardAction,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
 import { auth } from "@/server/auth";
 
 export default async function TransactionPage() {
@@ -15,7 +6,6 @@ export default async function TransactionPage() {
 
 	// biome-ignore lint/style/noNonNullAssertion: <explanation>
 	const literacy = userData!.user.literacyLevel;
-	console.log(literacy);
 
 	return (
 		<div className="space-y-2">

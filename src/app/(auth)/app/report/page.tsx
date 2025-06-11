@@ -12,7 +12,7 @@ import {
 import { auth } from "@/server/auth";
 import { db } from "@/server/db";
 import { companyHolders, finances, users } from "@/server/db/_main-schema";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
@@ -33,7 +33,8 @@ export default async function ReportPage() {
 		.from(finances)
 		.innerJoin(companyHolders, eq(finances.companyId, companyHolders.companyId))
 		.innerJoin(users, eq(users.id, companyHolders.userId))
-		.where(eq(companyHolders.userId, currentUserId));
+		.where(eq(companyHolders.userId, currentUserId))
+		.orderBy(desc(finances.createdAt));
 
 	return (
 		<div className="space-y-4">

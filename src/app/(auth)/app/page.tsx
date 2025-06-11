@@ -27,6 +27,10 @@ export default async function AppMainPage() {
 	const result = await db
 		.select({
 			labaBerjalan: finances.labaBerjalan,
+			hpp: finances.hpp,
+			bebanGaji: finances.bebanGaji,
+			bebanListrik: finances.bebanListrik,
+			bebanSewa: finances.bebanSewa,
 		})
 		.from(finances)
 		.innerJoin(companyHolders, eq(finances.companyId, companyHolders.companyId))
@@ -35,8 +39,22 @@ export default async function AppMainPage() {
 
 	const akumulasiPendapatan = result
 		.map((d) => (d.labaBerjalan ? Number.parseFloat(d.labaBerjalan) : 0))
-		.reduce((curr, acc) => curr + acc);
+		.reduce((curr, acc) => curr + acc, 0);
 	const pendapatan = new Intl.NumberFormat("id-ID").format(akumulasiPendapatan);
+
+	const akumulasiBeban = result
+		.map((d) => [
+			d.hpp ? Number.parseFloat(d.hpp) : 0,
+			d.bebanGaji ? Number.parseFloat(d.bebanGaji) : 0,
+			d.bebanListrik ? Number.parseFloat(d.bebanListrik) : 0,
+			d.bebanSewa ? Number.parseFloat(d.bebanSewa) : 0,
+		])
+		.reduce(
+			(accOuter, innerArray) =>
+				accOuter + innerArray.reduce((accInner, value) => accInner + value, 0),
+			0,
+		);
+	const totalBeban = new Intl.NumberFormat("id-ID").format(akumulasiBeban);
 
 	return (
 		<div className="space-y-1">
@@ -47,9 +65,9 @@ export default async function AppMainPage() {
 			<div className="flex w-full flex-col gap-4 md:flex-row">
 				<Card className="w-full border-t-4 border-t-teal-600">
 					<CardHeader className="text-center">
-						<CardTitle className="text-xl">Total Pendapatan</CardTitle>
+						<CardTitle className="text-xl">Total Laba</CardTitle>
 						<CardDescription>
-							Pendapatan yang baru masuk namun belum dikurangi beban usaha.
+							Laba yaitu berupa keuntungan yang usaha anda hasilkan.
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
@@ -72,7 +90,7 @@ export default async function AppMainPage() {
 					</CardHeader>
 					<CardContent>
 						<p className="text-center font-semibold text-3xl text-orange-600">
-							Rp 0
+							Rp {totalBeban}
 						</p>
 					</CardContent>
 					<CardFooter className="justify-center">
