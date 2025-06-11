@@ -9,11 +9,35 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 
+import { auth } from "@/server/auth";
+import { db } from "@/server/db";
+import { companyHolders, finances, users } from "@/server/db/_main-schema";
+import { eq } from "drizzle-orm";
+
 export const metadata: Metadata = {
 	title: "Beranda",
 };
 
-export default function AppMainPage() {
+export default async function AppMainPage() {
+	const userData = await auth();
+
+	// biome-ignore lint/style/noNonNullAssertion: <explanation>
+	const currentUserId = userData!.user.id;
+
+	const result = await db
+		.select({
+			labaBerjalan: finances.labaBerjalan,
+		})
+		.from(finances)
+		.innerJoin(companyHolders, eq(finances.companyId, companyHolders.companyId))
+		.innerJoin(users, eq(users.id, companyHolders.userId))
+		.where(eq(companyHolders.userId, currentUserId));
+
+	const akumulasiPendapatan = result
+		.map((d) => (d.labaBerjalan ? Number.parseFloat(d.labaBerjalan) : 0))
+		.reduce((curr, acc) => curr + acc);
+	const pendapatan = new Intl.NumberFormat("id-ID").format(akumulasiPendapatan);
+
 	return (
 		<div className="space-y-1">
 			<h2 className="scroll-m-20 pb-2 font-semibold text-3xl tracking-tight first:mt-0">
@@ -30,7 +54,7 @@ export default function AppMainPage() {
 					</CardHeader>
 					<CardContent>
 						<p className="text-center font-semibold text-3xl text-teal-600">
-							Rp 0
+							Rp {pendapatan}
 						</p>
 					</CardContent>
 					<CardFooter className="justify-center">

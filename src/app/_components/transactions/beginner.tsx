@@ -23,6 +23,7 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -138,6 +139,16 @@ export const BeginnerModeForm: React.FC = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [progress, setProgress] = useState(0);
 
+	const saveReport = api.finance.saveBeginnerReport.useMutation({
+		onSuccess: () => {
+			toast.success("Laporan tersimpan!");
+			setShowResults(true);
+
+			setTimeout(() => void setShowModal(true), 750);
+		},
+		onError: () => toast.error("Gagal menyimpan laporan"),
+	});
+
 	const {
 		control,
 		handleSubmit,
@@ -233,12 +244,7 @@ export const BeginnerModeForm: React.FC = () => {
 		}
 	};
 
-	const onSubmit = () => {
-		setShowResults(true);
-		setTimeout(() => {
-			setShowModal(true);
-		}, 500);
-	};
+	const onSubmit = () => void saveReport.mutate(formValues);
 
 	const resetForm = () => {
 		reset();
@@ -587,7 +593,7 @@ export const BeginnerModeForm: React.FC = () => {
 									<Button
 										variant="outline"
 										className="border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white"
-										disabled={currentStep === 1}
+										disabled={currentStep === 1 || saveReport.isPending}
 										onClick={prevStep}
 									>
 										<FiArrowLeft className="mr-2" /> Sebelumnya
@@ -598,7 +604,10 @@ export const BeginnerModeForm: React.FC = () => {
 											Berikutnya <FiArrowRight className="ml-2" />
 										</Button>
 									) : (
-										<Button onClick={handleSubmit(onSubmit)}>
+										<Button
+											disabled={saveReport.isPending}
+											onClick={handleSubmit(onSubmit)}
+										>
 											Hitung Laporan
 										</Button>
 									)}
