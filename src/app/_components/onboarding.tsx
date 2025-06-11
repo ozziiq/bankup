@@ -266,7 +266,7 @@ export const OnboardingInterface = () => {
 		: recommendations[0];
 
 	return (
-		<div className="bg-slate-200/40 py-10">
+		<div className="py-10">
 			<div className="mx-auto max-w-4xl p-4">
 				<div className="rounded-xl bg-white p-6 shadow-md md:p-8">
 					<div className="mb-6 text-center">

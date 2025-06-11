@@ -1,0 +1,710 @@
+{
+	"id": "5f80ce9c-2f15-4a14-b1b0-793684df65b3",
+	"prevId": "fb066b45-0e00-4e6a-b5f4-f8eb9d912a4f",
+	"version": "7",
+	"dialect": "postgresql",
+	"tables": {
+		"public.akurasi_account": {
+			"name": "akurasi_account",
+			"schema": "",
+			"columns": {
+				"userId": {
+					"name": "userId",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"type": {
+					"name": "type",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"provider": {
+					"name": "provider",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"providerAccountId": {
+					"name": "providerAccountId",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"refresh_token": {
+					"name": "refresh_token",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"access_token": {
+					"name": "access_token",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"expires_at": {
+					"name": "expires_at",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"token_type": {
+					"name": "token_type",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"scope": {
+					"name": "scope",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"id_token": {
+					"name": "id_token",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"session_state": {
+					"name": "session_state",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {
+				"account_user_id_idx": {
+					"name": "account_user_id_idx",
+					"columns": [
+						{
+							"expression": "userId",
+							"isExpression": false,
+							"asc": true,
+							"nulls": "last"
+						}
+					],
+					"isUnique": false,
+					"concurrently": false,
+					"method": "btree",
+					"with": {}
+				}
+			},
+			"foreignKeys": {
+				"akurasi_account_userId_akurasi_user_id_fk": {
+					"name": "akurasi_account_userId_akurasi_user_id_fk",
+					"tableFrom": "akurasi_account",
+					"tableTo": "akurasi_user",
+					"columnsFrom": ["userId"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {
+				"akurasi_account_provider_providerAccountId_pk": {
+					"name": "akurasi_account_provider_providerAccountId_pk",
+					"columns": ["provider", "providerAccountId"]
+				}
+			},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.akurasi_session": {
+			"name": "akurasi_session",
+			"schema": "",
+			"columns": {
+				"sessionToken": {
+					"name": "sessionToken",
+					"type": "varchar(255)",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"userId": {
+					"name": "userId",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"expires": {
+					"name": "expires",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true
+				}
+			},
+			"indexes": {
+				"t_user_id_idx": {
+					"name": "t_user_id_idx",
+					"columns": [
+						{
+							"expression": "userId",
+							"isExpression": false,
+							"asc": true,
+							"nulls": "last"
+						}
+					],
+					"isUnique": false,
+					"concurrently": false,
+					"method": "btree",
+					"with": {}
+				}
+			},
+			"foreignKeys": {
+				"akurasi_session_userId_akurasi_user_id_fk": {
+					"name": "akurasi_session_userId_akurasi_user_id_fk",
+					"tableFrom": "akurasi_session",
+					"tableTo": "akurasi_user",
+					"columnsFrom": ["userId"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.akurasi_user": {
+			"name": "akurasi_user",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "varchar(255)",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"name": {
+					"name": "name",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"email": {
+					"name": "email",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"emailVerified": {
+					"name": "emailVerified",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "CURRENT_TIMESTAMP"
+				},
+				"image": {
+					"name": "image",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"literacyLevel": {
+					"name": "literacyLevel",
+					"type": "literacyLevel",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.akurasi_verification_token": {
+			"name": "akurasi_verification_token",
+			"schema": "",
+			"columns": {
+				"identifier": {
+					"name": "identifier",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"token": {
+					"name": "token",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"expires": {
+					"name": "expires",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": true
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {
+				"akurasi_verification_token_identifier_token_pk": {
+					"name": "akurasi_verification_token_identifier_token_pk",
+					"columns": ["identifier", "token"]
+				}
+			},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.akurasi_company": {
+			"name": "akurasi_company",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "varchar(255)",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"name": {
+					"name": "name",
+					"type": "varchar(256)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"type": {
+					"name": "type",
+					"type": "companyType",
+					"typeSchema": "public",
+					"primaryKey": false,
+					"notNull": true
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.akurasi_company_holder": {
+			"name": "akurasi_company_holder",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "integer",
+					"primaryKey": true,
+					"notNull": true,
+					"identity": {
+						"type": "byDefault",
+						"name": "akurasi_company_holder_id_seq",
+						"schema": "public",
+						"increment": "1",
+						"startWith": "1",
+						"minValue": "1",
+						"maxValue": "2147483647",
+						"cache": "1",
+						"cycle": false
+					}
+				},
+				"userId": {
+					"name": "userId",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"companyId": {
+					"name": "companyId",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"approved": {
+					"name": "approved",
+					"type": "boolean",
+					"primaryKey": false,
+					"notNull": true,
+					"default": false
+				},
+				"approvedAt": {
+					"name": "approvedAt",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"akurasi_company_holder_userId_akurasi_user_id_fk": {
+					"name": "akurasi_company_holder_userId_akurasi_user_id_fk",
+					"tableFrom": "akurasi_company_holder",
+					"tableTo": "akurasi_user",
+					"columnsFrom": ["userId"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				},
+				"akurasi_company_holder_companyId_akurasi_company_id_fk": {
+					"name": "akurasi_company_holder_companyId_akurasi_company_id_fk",
+					"tableFrom": "akurasi_company_holder",
+					"tableTo": "akurasi_company",
+					"columnsFrom": ["companyId"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		},
+		"public.akurasi_finance": {
+			"name": "akurasi_finance",
+			"schema": "",
+			"columns": {
+				"id": {
+					"name": "id",
+					"type": "integer",
+					"primaryKey": true,
+					"notNull": true,
+					"identity": {
+						"type": "byDefault",
+						"name": "akurasi_finance_id_seq",
+						"schema": "public",
+						"increment": "1",
+						"startWith": "1",
+						"minValue": "1",
+						"maxValue": "2147483647",
+						"cache": "1",
+						"cycle": false
+					}
+				},
+				"kasDanBank": {
+					"name": "kasDanBank",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"piutangUsaha": {
+					"name": "piutangUsaha",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"persediaan": {
+					"name": "persediaan",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"uangMukaPembelian": {
+					"name": "uangMukaPembelian",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"investasiJangkaPendek": {
+					"name": "investasiJangkaPendek",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"peralatanUsaha": {
+					"name": "peralatanUsaha",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"kendaraanUsaha": {
+					"name": "kendaraanUsaha",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"bangunanUsaha": {
+					"name": "bangunanUsaha",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"tanah": {
+					"name": "tanah",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"akumulasiPenyusutan": {
+					"name": "akumulasiPenyusutan",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"asetTakBerwujud": {
+					"name": "asetTakBerwujud",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"investasiJangkaPanjang": {
+					"name": "investasiJangkaPanjang",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"utangUsaha": {
+					"name": "utangUsaha",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"utangBankPendek": {
+					"name": "utangBankPendek",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"utangPajak": {
+					"name": "utangPajak",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"bebanYangHarusDibayar": {
+					"name": "bebanYangHarusDibayar",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"utangBankPanjang": {
+					"name": "utangBankPanjang",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"utangLeasing": {
+					"name": "utangLeasing",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"modalAwal": {
+					"name": "modalAwal",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"labaDitahan": {
+					"name": "labaDitahan",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"labaBerjalan": {
+					"name": "labaBerjalan",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"prive": {
+					"name": "prive",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"pendapatanUsaha": {
+					"name": "pendapatanUsaha",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"hpp": {
+					"name": "hpp",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"bebanGaji": {
+					"name": "bebanGaji",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"bebanSewa": {
+					"name": "bebanSewa",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"bebanListrik": {
+					"name": "bebanListrik",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"bebanTransportasi": {
+					"name": "bebanTransportasi",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"bebanPromosi": {
+					"name": "bebanPromosi",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"bebanPenyusutan": {
+					"name": "bebanPenyusutan",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"pendapatanBunga": {
+					"name": "pendapatanBunga",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"bebanBungaPinjaman": {
+					"name": "bebanBungaPinjaman",
+					"type": "numeric(100, 2)",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "'0'"
+				},
+				"kebijakan_akuntansi": {
+					"name": "kebijakan_akuntansi",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "''"
+				},
+				"penjelasan_aset": {
+					"name": "penjelasan_aset",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "''"
+				},
+				"penjelasan_utang": {
+					"name": "penjelasan_utang",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "''"
+				},
+				"informasi_tambahan": {
+					"name": "informasi_tambahan",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "''"
+				},
+				"companyId": {
+					"name": "companyId",
+					"type": "varchar(255)",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"createdBy": {
+					"name": "createdBy",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp with time zone",
+					"primaryKey": false,
+					"notNull": false,
+					"default": "CURRENT_TIMESTAMP"
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"akurasi_finance_companyId_akurasi_company_id_fk": {
+					"name": "akurasi_finance_companyId_akurasi_company_id_fk",
+					"tableFrom": "akurasi_finance",
+					"tableTo": "akurasi_company",
+					"columnsFrom": ["companyId"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				},
+				"akurasi_finance_createdBy_akurasi_company_holder_id_fk": {
+					"name": "akurasi_finance_createdBy_akurasi_company_holder_id_fk",
+					"tableFrom": "akurasi_finance",
+					"tableTo": "akurasi_company_holder",
+					"columnsFrom": ["createdBy"],
+					"columnsTo": ["id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {},
+			"policies": {},
+			"checkConstraints": {},
+			"isRLSEnabled": false
+		}
+	},
+	"enums": {
+		"public.literacyLevel": {
+			"name": "literacyLevel",
+			"schema": "public",
+			"values": ["beginner", "intermediate", "professional"]
+		},
+		"public.companyType": {
+			"name": "companyType",
+			"schema": "public",
+			"values": ["retail"]
+		}
+	},
+	"schemas": {},
+	"sequences": {},
+	"roles": {},
+	"policies": {},
+	"views": {},
+	"_meta": {
+		"columns": {},
+		"schemas": {},
+		"tables": {}
+	}
+}

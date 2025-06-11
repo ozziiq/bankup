@@ -2,6 +2,7 @@ import { relations } from "drizzle-orm";
 import { pgEnum } from "drizzle-orm/pg-core";
 import { createTable } from "./_table";
 
+import { finances } from "./accountant";
 import { users } from "./auth";
 
 export const companyTypeEnum = pgEnum("companyType", ["retail"]);
@@ -16,8 +17,12 @@ export const companies = createTable("company", (d) => ({
 	type: companyTypeEnum().notNull(),
 }));
 
-export const companyRelations = relations(companies, ({ many }) => ({
+export const companyRelations = relations(companies, ({ one, many }) => ({
 	holder: many(companyHolders),
+	finance: one(finances, {
+		fields: [companies.id],
+		references: [finances.companyId],
+	}),
 }));
 
 export const companyHolders = createTable("company_holder", (d) => ({
