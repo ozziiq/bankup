@@ -79,7 +79,7 @@ const calculateResults = (values: {
 
 export default async function DetailedTransactionReportPage({
 	params,
-}: { params: { id: string } }) {
+}: { params: Promise<{ id: string }> }) {
 	const { id: _id } = await params;
 	const id = Number.parseInt(_id);
 
