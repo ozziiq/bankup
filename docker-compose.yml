@@ -1,0 +1,41 @@
+services:
+  postgres:
+    container_name: bankup_db
+    image: postgres:16
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-U", "bankup", "-d", "bankup"]
+      interval: 3s
+      retries: 10
+      start_period: 30s
+    environment:
+      POSTGRES_DB: bankup
+      POSTGRES_USER: bankup
+      POSTGRES_PASSWORD: bankup
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  bankup:
+    container_name: bankup
+    environment:
+      NODE_ENV: "production" # should be set by default tho
+      AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_GOOGLE_ID: ${AUTH_GOOGLE_ID}
+      AUTH_GOOGLE_SECRET: ${AUTH_GOOGLE_SECRET}
+      DATABASE_URL: "postgresql://bankup:bankup@postgres:5432/bankup"
+      NEXT_PUBLIC_BRAND_NAME: ${NEXT_PUBLIC_BRAND_NAME:-"EcoKnow.ME"}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_started
+    ports:
+      - 8100:3000
+
+volumes:
+  postgres:
