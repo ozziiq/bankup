@@ -18,6 +18,7 @@ import { auth } from "@/server/auth";
 import { db } from "@/server/db";
 import { companyHolders, finances, users } from "@/server/db/_main-schema";
 import { and, eq } from "drizzle-orm";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import {
 	FiBarChart2,
@@ -29,6 +30,10 @@ import {
 
 import { calculateResults, formatIDR } from "@/lib/utils";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+	title: "Rincian Laporan Keuangan",
+};
 
 export default async function DetailedTransactionReportPage({
 	params,

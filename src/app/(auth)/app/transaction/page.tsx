@@ -1,5 +1,10 @@
 import { BeginnerModeForm } from "@/app/_components/transactions/beginner";
 import { auth } from "@/server/auth";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Transaksi",
+};
 
 export default async function TransactionPage() {
 	const userData = await auth();
