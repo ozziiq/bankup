@@ -23,9 +23,11 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { calculateResults, formatIDR } from "@/lib/utils";
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoaderCircle } from "lucide-react";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
@@ -34,10 +36,7 @@ import {
 	FiBarChart2,
 	FiCheckCircle,
 	FiCreditCard,
-	FiDollarSign,
 	FiFile,
-	FiFilePlus,
-	FiFileText,
 	FiHelpCircle,
 	FiPieChart,
 	FiTrendingUp,
@@ -185,52 +184,7 @@ export const BeginnerModeForm: React.FC = () => {
 		setProgress(progressValue);
 	}, [currentStep]);
 
-	// Calculate results
-	const calculateResults = () => {
-		const totalBeban =
-			formValues.gaji +
-			formValues.listrik +
-			formValues.sewa +
-			formValues.bahanBaku;
-		const labaBersih = formValues.pendapatan - totalBeban;
-
-		const totalAset =
-			formValues.kas +
-			formValues.piutang +
-			formValues.persediaan +
-			formValues.asetTetap;
-		const totalUtang = formValues.utangUsaha + formValues.pinjaman;
-		const totalModal =
-			formValues.modalAwal + formValues.investasiTambahan + labaBersih;
-		const neraca = totalAset - (totalUtang + totalModal);
-
-		const arusKasOperasi = formValues.pendapatan - totalBeban;
-		const arusKasInvestasi = -formValues.asetTetap;
-		const arusKasPendanaan = formValues.investasiTambahan - formValues.pinjaman;
-
-		return {
-			labaBersih,
-			totalAset,
-			totalUtang,
-			totalModal,
-			neraca,
-			arusKasOperasi,
-			arusKasInvestasi,
-			arusKasPendanaan,
-			totalBeban,
-		};
-	};
-
-	const results = calculateResults();
-
-	// Format to IDR currency
-	const formatIDR = (value: number) => {
-		return new Intl.NumberFormat("id-ID", {
-			style: "currency",
-			currency: "IDR",
-			minimumFractionDigits: 0,
-		}).format(value);
-	};
+	const results = calculateResults(formValues);
 
 	// Navigation functions
 	const nextStep = async () => {
@@ -725,15 +679,20 @@ export const BeginnerModeForm: React.FC = () => {
 								</div>
 
 								<div className="flex flex-col justify-center gap-4 sm:flex-row">
-									<Button className="bg-teal-600 hover:bg-teal-700">
-										<FiFile className="mr-2" /> Unduh PDF
-									</Button>
-									{/* <Button
-										variant="outline"
-										className="border-teal-600 text-teal-600 hover:bg-teal-50"
-									>
-										<FiFilePlus className="mr-2" /> Unduh Excel
-									</Button> */}
+									{saveReport.data?.map((result) => (
+										<Button
+											asChild
+											key={result.id}
+											className="bg-teal-600 hover:bg-teal-700"
+										>
+											<Link
+												target="_blank"
+												href={`/api/pdf-report/${result.id}`}
+											>
+												<FiFile className="mr-2" /> Unduh PDF
+											</Link>
+										</Button>
+									))}
 									<Button variant="outline" onClick={resetForm}>
 										Buat Laporan Baru
 									</Button>

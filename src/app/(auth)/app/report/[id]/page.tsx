@@ -18,6 +18,7 @@ import { auth } from "@/server/auth";
 import { db } from "@/server/db";
 import { companyHolders, finances, users } from "@/server/db/_main-schema";
 import { and, eq } from "drizzle-orm";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import {
 	FiBarChart2,
@@ -27,54 +28,11 @@ import {
 	FiTrendingUp,
 } from "react-icons/fi";
 
-const formatIDR = (value: number) => {
-	return new Intl.NumberFormat("id-ID", {
-		style: "currency",
-		currency: "IDR",
-		minimumFractionDigits: 0,
-	}).format(value);
-};
+import { calculateResults, formatIDR } from "@/lib/utils";
+import Link from "next/link";
 
-const calculateResults = (values: {
-	gaji: number;
-	listrik: number;
-	sewa: number;
-	bahanBaku: number;
-	pendapatan: number;
-	kas: number;
-	piutang: number;
-	persediaan: number;
-	asetTetap: number;
-	utangUsaha: number;
-	pinjaman: number;
-	modalAwal: number;
-	investasiTambahan: number;
-}) => {
-	const totalBeban =
-		values.gaji + values.listrik + values.sewa + values.bahanBaku;
-	const labaBersih = values.pendapatan - totalBeban;
-
-	const totalAset =
-		values.kas + values.piutang + values.persediaan + values.asetTetap;
-	const totalUtang = values.utangUsaha + values.pinjaman;
-	const totalModal = values.modalAwal + values.investasiTambahan + labaBersih;
-	const neraca = totalAset - (totalUtang + totalModal);
-
-	const arusKasOperasi = values.pendapatan - totalBeban;
-	const arusKasInvestasi = -values.asetTetap;
-	const arusKasPendanaan = values.investasiTambahan - values.pinjaman;
-
-	return {
-		labaBersih,
-		totalAset,
-		totalUtang,
-		totalModal,
-		neraca,
-		arusKasOperasi,
-		arusKasInvestasi,
-		arusKasPendanaan,
-		totalBeban,
-	};
+export const metadata: Metadata = {
+	title: "Rincian Laporan Keuangan",
 };
 
 export default async function DetailedTransactionReportPage({
@@ -128,28 +86,6 @@ export default async function DetailedTransactionReportPage({
 
 	if (!data) redirect("/app/report");
 
-	// const values = {
-	//     pendapatanUsaha: data.pendapatanUsaha ? Number.parseFloat(data.pendapatanUsaha) : 0,
-	//     hpp: data.hpp ? Number.parseFloat(data.hpp) : 0,
-	//     bebanGaji: data.bebanGaji ? Number.parseFloat(data.bebanGaji) : 0,
-	//     bebanListrik: data.bebanListrik ? Number.parseFloat(data.bebanListrik) : 0,
-	//     bebanSewa: data.bebanSewa ? Number.parseFloat(data.bebanSewa) : 0,
-
-	//     // Balance Sheet - Assets
-	//     kasDanBank: data.kasDanBank ? Number.parseFloat(data.kasDanBank) : 0,
-	//     piutangUsaha: data.piutangUsaha ? Number.parseFloat(data.piutangUsaha) : 0,
-	//     persediaan: data.persediaan ? Number.parseFloat(data.persediaan) : 0,
-	//     peralatanUsaha: data.peralatanUsaha ? Number.parseFloat(data.peralatanUsaha) : 0,
-
-	//     // Balance Sheet - Liabilities
-	//     utangUsaha: data.utangUsaha ? Number.parseFloat(data.utangUsaha) : 0,
-	//     utangBankPendek: data.utangBankPendek ? Number.parseFloat(data.utangBankPendek) : 0,
-
-	//     // Equity
-	//     modalAwal: data.modalAwal ? Number.parseFloat(data.modalAwal) : 0,
-	//     labaDitahan: data.labaDitahan ? Number.parseFloat(data.labaDitahan) : 0,
-	//     labaBerjalan: data.labaBerjalan ? Number.parseFloat(data.labaBerjalan) : 0,
-	// }
 	const realResult = calculateResults({
 		pendapatan: data.pendapatanUsaha
 			? Number.parseFloat(data.pendapatanUsaha)
@@ -181,7 +117,7 @@ export default async function DetailedTransactionReportPage({
 					{data.createdAt!.toLocaleString("id-ID")}
 				</CardDescription>
 				<CardAction>
-					<div className="flex items-center gap-2">
+					<div className="flex items-center md:gap-2">
 						<Avatar>
 							{/* biome-ignore lint/style/noNonNullAssertion: <explanation> */}
 							<AvatarImage src={data.authorImage!} />
@@ -189,7 +125,7 @@ export default async function DetailedTransactionReportPage({
 								{data.author ? data.author.slice(0, 2) : "N/A"}
 							</AvatarFallback>
 						</Avatar>
-						<div className="flex flex-col">
+						<div className="hidden md:flex md:flex-col">
 							<p className="text-sm">{data.author ?? "N/A"}</p>
 							<p className="font-semibold text-sm">Author</p>
 						</div>
@@ -301,16 +237,15 @@ export default async function DetailedTransactionReportPage({
 					</div>
 
 					<div className="flex flex-col justify-center gap-4 sm:flex-row">
-						<Button className="bg-teal-600 hover:bg-teal-700">
-							<FiFile className="mr-2" /> Unduh PDF
+						<Button asChild className="bg-teal-600 hover:bg-teal-700">
+							<Link target="_blank" href={`/api/pdf-report/${data.financeId}`}>
+								<FiFile className="mr-2" /> Unduh PDF
+							</Link>
 						</Button>
-						{/* <Button
-                            variant="outline"
-                            className="border-teal-600 text-teal-600 hover:bg-teal-50"
-                        >
-                            <FiFilePlus className="mr-2" /> Unduh Excel
-                        </Button> */}
-						<Button variant="outline">Buat Laporan Baru</Button>
+
+						<Button asChild variant="outline">
+							<Link href="/app/transaction">Buat Laporan Baru</Link>
+						</Button>
 					</div>
 				</div>
 			</CardContent>

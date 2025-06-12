@@ -14,7 +14,12 @@ import { db } from "@/server/db";
 import { companyHolders, finances, users } from "@/server/db/_main-schema";
 import { desc, eq } from "drizzle-orm";
 import { ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+	title: "Laporan Keuangan",
+};
 
 export default async function ReportPage() {
 	const userData = await auth();
