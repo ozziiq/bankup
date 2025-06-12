@@ -28,6 +28,7 @@ import {
 } from "react-icons/fi";
 
 import { calculateResults, formatIDR } from "@/lib/utils";
+import Link from "next/link";
 
 export default async function DetailedTransactionReportPage({
 	params,
@@ -231,16 +232,15 @@ export default async function DetailedTransactionReportPage({
 					</div>
 
 					<div className="flex flex-col justify-center gap-4 sm:flex-row">
-						<Button className="bg-teal-600 hover:bg-teal-700">
-							<FiFile className="mr-2" /> Unduh PDF
+						<Button asChild className="bg-teal-600 hover:bg-teal-700">
+							<Link target="_blank" href={`/api/pdf-report/${data.financeId}`}>
+								<FiFile className="mr-2" /> Unduh PDF
+							</Link>
 						</Button>
-						{/* <Button
-                            variant="outline"
-                            className="border-teal-600 text-teal-600 hover:bg-teal-50"
-                        >
-                            <FiFilePlus className="mr-2" /> Unduh Excel
-                        </Button> */}
-						<Button variant="outline">Buat Laporan Baru</Button>
+
+						<Button asChild variant="outline">
+							<Link href="/app/transaction">Buat Laporan Baru</Link>
+						</Button>
 					</div>
 				</div>
 			</CardContent>
