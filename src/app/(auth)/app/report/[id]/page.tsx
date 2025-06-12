@@ -112,7 +112,7 @@ export default async function DetailedTransactionReportPage({
 					{data.createdAt!.toLocaleString("id-ID")}
 				</CardDescription>
 				<CardAction>
-					<div className="flex items-center gap-2">
+					<div className="flex items-center md:gap-2">
 						<Avatar>
 							{/* biome-ignore lint/style/noNonNullAssertion: <explanation> */}
 							<AvatarImage src={data.authorImage!} />
@@ -120,7 +120,7 @@ export default async function DetailedTransactionReportPage({
 								{data.author ? data.author.slice(0, 2) : "N/A"}
 							</AvatarFallback>
 						</Avatar>
-						<div className="flex flex-col">
+						<div className="hidden md:flex md:flex-col">
 							<p className="text-sm">{data.author ?? "N/A"}</p>
 							<p className="font-semibold text-sm">Author</p>
 						</div>

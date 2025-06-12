@@ -27,6 +27,7 @@ import { calculateResults, formatIDR } from "@/lib/utils";
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoaderCircle } from "lucide-react";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
@@ -678,15 +679,20 @@ export const BeginnerModeForm: React.FC = () => {
 								</div>
 
 								<div className="flex flex-col justify-center gap-4 sm:flex-row">
-									<Button className="bg-teal-600 hover:bg-teal-700">
-										<FiFile className="mr-2" /> Unduh PDF
-									</Button>
-									{/* <Button
-										variant="outline"
-										className="border-teal-600 text-teal-600 hover:bg-teal-50"
-									>
-										<FiFilePlus className="mr-2" /> Unduh Excel
-									</Button> */}
+									{saveReport.data?.map((result) => (
+										<Button
+											asChild
+											key={result.id}
+											className="bg-teal-600 hover:bg-teal-700"
+										>
+											<Link
+												target="_blank"
+												href={`/api/pdf-report/${result.id}`}
+											>
+												<FiFile className="mr-2" /> Unduh PDF
+											</Link>
+										</Button>
+									))}
 									<Button variant="outline" onClick={resetForm}>
 										Buat Laporan Baru
 									</Button>
