@@ -57,10 +57,10 @@ export const Navbar = () => {
 				>
 					<li>
 						<a
-							href="https://drive.google.com/drive/folders/1HGY_fqyvd2ZDWda45zAqFGUq8ZoyiXT0"
+							href="https://ecoknowme-pmw.vercel.app/AKU-Kasir.html"
 							className="font-semibold transition hover:text-teal-600"
 						>
-							Laporan Keuangan Kami
+							Kasir
 						</a>
 					</li>
 					{pathname === "/" ? (
